@@ -12,6 +12,29 @@
   --gray-12: oklch(14.5% 0 0);
 }
 
+:root {
+  /* Backgrounds */
+  --background: #212529;
+  --surface: #343a40;
+  --surface-secondary: #3E5C76;
+
+  /* Text */
+  --text-primary: #f8f9fa;
+  --text-secondary: oklch(45% 0.02 260);
+  --text-muted: oklch(60% 0.01 260);
+
+  /* Accent */
+  --primary: oklch(58% 0.18 255);
+  --primary-hover: oklch(50% 0.18 255);
+
+  /* Borders */
+  --border: #243245;
+
+  /* Status */
+  --success: oklch(68% 0.18 150);
+  --danger: oklch(62% 0.22 25);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -23,7 +46,7 @@ body {
   height: 100%;
   font-family: system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
-  background: var(--gray-2);
+  background: var(--background);
   color: var(--gray-10);
   font-size: 16px;
   line-height: 1.5;
@@ -50,8 +73,9 @@ h6 {
 /* Header */
 header {
   max-width: 1440px;
-  margin: auto;
-  padding: 0 30px;
+  margin: 0 30px;
+  margin-bottom: 10px;
+  background: var(--background);
 }
 header > div {
   display: flex;
@@ -81,8 +105,8 @@ main {
   flex-direction: column;
   justify-content: space-between;
   min-height: calc(100vh - 65px);
-  background: #fff;
-  border: 1px solid var(--gray-3);
+  background: var(--surface);
+  border: .5px solid var(--border);
 }
 
 .hero {

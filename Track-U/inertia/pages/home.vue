@@ -2,7 +2,7 @@
   <Head title="Homepage" />
 
   <div>
-
+    
   </div>
 </template>
 
