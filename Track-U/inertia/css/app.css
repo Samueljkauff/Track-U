@@ -28,7 +28,7 @@
   --primary-hover: oklch(50% 0.18 255);
 
   /* Borders */
-  --border: #243245;
+  --border: #6c757d;
 
   /* Status */
   --success: oklch(68% 0.18 150);
@@ -72,8 +72,8 @@ h6 {
 
 /* Header */
 header {
-  max-width: 1440px;
-  margin: 0 30px;
+  max-width: full;
+  margin: 0 60px;
   margin-bottom: 10px;
   background: var(--background);
 }
@@ -99,14 +99,15 @@ header nav a.current {
 
 /* Main */
 main {
-  max-width: 1440px;
-  margin: 0 30px;
+  margin: 0 60px;
+  width: full;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: calc(100vh - 65px);
   background: var(--surface);
-  border: .5px solid var(--border);
+  border: .2px solid var(--border);
+  border-radius: .5%;
 }
 
 .hero {
@@ -218,6 +219,10 @@ button {
 }
 button:hover {
   background: var(--gray-10);
+}
+
+nav {
+    border: .2px solid var(--border);
 }
 
 /* Alerts */
