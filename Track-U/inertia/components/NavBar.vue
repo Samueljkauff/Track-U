@@ -15,7 +15,8 @@
             <li
                 v-for="(item, index) in NavItems.slice(2)"
                 :key="index"
-                class="flex-1 text-center"
+                class="flex flex-1 justify-center items-center h-full hover:bg-linear-to-t from-gray-600 to-(--surface)"
+                :class="{ 'rounded-br-md': index === NavItems.slice(2).length - 1 }"
             >
                 {{ item }}
             </li>
