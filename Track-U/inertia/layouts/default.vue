@@ -29,17 +29,7 @@ watch(
 
 <template>
   <header>
-          <NavBar></NavBar>
-          <!-- <template v-if="page.props.user">
-            <span>{{ page.props.user.initials }}</span>
-            <Form route="session.destroy">
-              <button type="submit">Logout</button>
-            </Form>
-          </template>
-          <template v-else>
-            <Link route="new_account.create">Signup</Link>
-            <Link route="session.create">Login</Link>
-          </template> -->
+      <NavBar></NavBar>
   </header>
 
   <main>

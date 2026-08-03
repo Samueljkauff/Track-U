@@ -15,8 +15,8 @@
 :root {
   /* Backgrounds */
   --background: #212529;
-  --surface: #343a40;
-  --surface-secondary: #3E5C76;
+  --surface: #3f474e;
+  --surface-secondary: #6c757d;
 
   /* Text */
   --text-primary: #f8f9fa;
@@ -63,7 +63,7 @@ a {
 
 h1,
 h2,
-h3,
+h3,™
 h4,
 h5,
 h6 {
@@ -104,10 +104,11 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: calc(100vh - 65px);
+  height: calc(100vh - 65px);
   background: var(--surface);
   border: .2px solid var(--border);
   border-radius: .5%;
+  padding: 1rem;
 }
 
 .hero {
@@ -256,6 +257,14 @@ nav {
   flex-direction: column;
   align-items: center;
 }
+.segment {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(#212529);
+  border-radius: .25rem;
+  background-color: var(--surface-secondary);
+  box-shadow: inset 0 0 10px #212529;
+} 
 
 @keyframes scale-up {
   from {
