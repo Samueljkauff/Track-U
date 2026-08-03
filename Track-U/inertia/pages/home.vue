@@ -1,7 +1,7 @@
 <template>
   <Head title="Homepage" />
   <div class="grid grid-cols-3 gap-4 w-auto h-full m-10">
-    <div class="segment col-span-2">
+    <div class="segment col-span-2 h-full">
       <NowListening />
     </div>
     <div class="segment">
