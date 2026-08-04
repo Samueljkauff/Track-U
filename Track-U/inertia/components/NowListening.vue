@@ -1,6 +1,6 @@
 <template>
     <div class="w-full h-full flex flex-col items-center justify-center gap-3">
-        <div class="flex flex-col items-center gap-3 bg-(--surface) rounded-sm p-8 text-[#f8f9fa] border border-[#6C757D]">
+        <div class="flex flex-col items-center gap-3 bg-(--surface) rounded-sm p-8 text-[#f8f9fa] container-shadow">
             <p class="text-5xl font-bold z-10">Now Listening to</p>
             <img class="h-80 active" :src="currentSong.albumCover" alt="album cover">
             <p class="text-4xl font-semibold">{{ currentSong.songName }}</p>
@@ -38,8 +38,14 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: calc(var(--spacing) * 3)
+    gap: calc(var(--spacing) * 3);
+}
 
+.container-shadow {
+    box-shadow: 0 0 10px #212529;
+    border-color: #212529;
+    border-style: var(--tw-border-style);
+    border-width: 1px;
 }
 
 @keyframes pulse {
