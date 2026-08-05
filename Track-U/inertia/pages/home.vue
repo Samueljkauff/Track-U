@@ -3,7 +3,7 @@
   <div class="grid grid-cols-3 gap-4 w-auto h-full m-1">
     <div class="segment col-span-2 h-full flex flex-col gap-3">
       <NowListening class="flex-1" />
-      <Topster class="w-auto grid grid-cols-3 gap-3 flex-1" />
+      <Topsters class="w-auto grid grid-cols-3 gap-3 flex-1" />
     </div>
     <div class="segment">
       Hey

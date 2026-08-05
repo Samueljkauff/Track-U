@@ -1,13 +1,52 @@
 <template>
-    <div class="w-auto h-[50%] grid grid-cols-3 items-center justify-center gap-3 m-3">
-        <div class="col-span-3 flex flex-col items-center gap-3 bg-(--surface) rounded-sm p-8 text-[#f8f9fa] container-shadow">
-            
+        <div class="h-auto col-span-3 flex flex-col items-center gap-3 mr-3 ml-3 mb-3 text-[#f8f9fa]">
+            <div v-for="cats in Categories" class="flex justify-center font-semibold p-3 text-lg h-full container-shadow bg-(--surface) rounded-sm">
+                {{ cats.name }}
+            </div>
         </div>
-    </div>
 </template>
 
 <script lang="ts">
-export default {
-
+interface TopEntry {
+  name: string;
+  plays: number;
 }
+
+interface Category {
+  name: string;
+  topThree: [TopEntry, TopEntry, TopEntry];
+}
+
+export default {
+  data() {
+    return {
+      Categories: [
+        {
+          name: "Top Artists",
+          topThree: [
+            { name: '', plays: 0 },
+            { name: '', plays: 0 },
+            { name: '', plays: 0 },
+          ],
+        },
+        {
+          name: "Top Albums",
+          topThree: [
+            { name: '', plays: 0 },
+            { name: '', plays: 0 },
+            { name: '', plays: 0 },
+          ],
+        },
+        {
+          name: "Top Tracks",
+          topThree: [
+            { name: '', plays: 0 },
+            { name: '', plays: 0 },
+            { name: '', plays: 0 },
+          ],
+        },
+      ] as Category[],
+    };
+  },
+};
 </script>
