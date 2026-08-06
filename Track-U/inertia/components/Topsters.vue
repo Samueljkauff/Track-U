@@ -1,7 +1,8 @@
 <template>
         <div class="h-auto col-span-3 flex flex-col items-center gap-3 mr-3 ml-3 mb-3 text-[#f8f9fa]">
-            <div v-for="cats in Categories" class="flex justify-center font-semibold p-3 text-lg h-full container-shadow bg-(--surface) rounded-sm">
+            <div v-for="cats in Categories" class="flex justify-center font-semibold p-3 text-lg h-full container-shadow bg-(--surface) rounded-xs">
                 {{ cats.name }}
+                <hr>
             </div>
         </div>
 </template>

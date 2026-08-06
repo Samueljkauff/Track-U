@@ -1,6 +1,6 @@
 <template>
     <div class="w-auto h-[50%] grid grid-cols-3 items-center justify-center gap-3 ml-3 mr-3 mt-3">
-        <div class="col-span-3 flex flex-col items-center gap-3 bg-(--surface) rounded-sm p-8 text-[#f8f9fa] container-shadow">
+        <div class="col-span-3 flex flex-col items-center gap-3 bg-(--surface) rounded-xs p-8 text-[#f8f9fa] container-shadow">
             <p class="text-5xl font-bold z-10">Now Listening to</p>
             <img class="h-60 active" :src="currentSong.albumCover" alt="album cover">
             <p class="text-4xl font-semibold">{{ currentSong.songName }}</p>

@@ -256,7 +256,6 @@ nav {
   align-items: center;
 }
 .segment {
-  border-style: var(--tw-border-style);
   border-width: 1px;
   border-color: #212529;
   border-radius: .25rem;
@@ -266,7 +265,6 @@ nav {
 .container-shadow {
     box-shadow: 0 0 10px #212529;
     border-color: #212529;
-    border-style: var(--tw-border-style);
     border-width: 1px;
 }
 
