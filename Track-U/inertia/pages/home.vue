@@ -6,7 +6,7 @@
       <Topsters class="w-auto grid grid-cols-3 gap-3 flex-1" />
     </div>
     <div class="segment">
-      Hey
+      <Recents />
     </div>
   </div>
 </template>
@@ -14,6 +14,7 @@
 <script lang="ts">
 import { Head } from '@inertiajs/vue3';
 import NowListening from '~/components/NowListening.vue';
+import Recents from '~/components/Recents.vue';
 import Topsters from '~/components/Topsters.vue';
 
 export default {
@@ -21,7 +22,8 @@ export default {
   components: {
     Head,
     NowListening,
-    Topsters
+    Topsters,
+    Recents
   }
 };
 </script>
