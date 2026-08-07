@@ -1,9 +1,10 @@
 <template>
   <Head title="Homepage" />
   <div class="grid grid-cols-3 gap-4 w-auto h-full m-1">
-    <div class="segment col-span-2 h-full flex flex-col gap-3">
-      <NowListening class="flex-1" />
-      <Topsters class="w-auto grid grid-cols-3 gap-3 flex-1" />
+    <div class="segment col-span-2 h-full grid grid-col-3 gap-3 min-h-0">
+      <NowListening class="min-h-0 col-span-2" />
+      <div class="w-full">Badges?</div>
+      <Topsters class="w-auto grid grid-cols-3 gap-3 flex-1 min-h-0" />
     </div>
     <div class="segment">
       <Recents />
