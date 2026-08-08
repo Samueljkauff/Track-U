@@ -39,14 +39,6 @@ export default {
           ],
         },
         {
-          name: "Top Albums",
-          topThree: [
-            { name: '', plays: 0 },
-            { name: '', plays: 0 },
-            { name: '', plays: 0 },
-          ],
-        },
-        {
           name: "Top Tracks",
           topThree: [
             { name: '', plays: 0 },

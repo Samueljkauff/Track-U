@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full h-full pt-3 pl-3 pr-3 min-h-0">
+    <div class="w-full h-full pt-3 pl-3 min-h-0">
         <div class="w-full h-full flex flex-col items-center justify-center gap-3 bg-(--surface) rounded-xs p-8 text-[#f8f9fa] container-shadow min-h-0">
             <p class="text-5xl font-bold z-10">Now Listening to</p>
             <img class="max-h-60 active" :src="currentSong.albumCover" alt="album cover">
