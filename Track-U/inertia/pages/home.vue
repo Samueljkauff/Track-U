@@ -3,7 +3,10 @@
   <div class="grid grid-cols-3 gap-4 w-auto h-full m-1">
     <div class="segment col-span-2 h-full grid grid-col-3 gap-3 min-h-0">
       <NowListening class="min-h-0 col-span-2" />
-      <AlbumShowcase class="w-full" />
+      <div>
+        <AlbumShowcase class="w-full" />
+        <DotNav />
+      </div>
       <Topsters class="w-auto grid grid-cols-2 gap-3 flex-1 min-h-0" />
     </div>
     <div class="segment">
@@ -15,6 +18,7 @@
 <script lang="ts">
 import { Head } from '@inertiajs/vue3';
 import AlbumShowcase from '~/components/AlbumShowcase.vue';
+import DotNav from '~/components/DotNAv.vue';
 import NowListening from '~/components/NowListening.vue';
 import Recents from '~/components/Recents.vue';
 import Topsters from '~/components/Topsters.vue';
@@ -26,7 +30,8 @@ export default {
     NowListening,
     Topsters,
     Recents,
-    AlbumShowcase
+    AlbumShowcase,
+    DotNav
   }
 };
 </script>
