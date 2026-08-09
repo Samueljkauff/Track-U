@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col items-center h-full pr-3 pt-3 font-bold text-[#212529]">
+    <div class="flex flex-col items-center pr-3 pt-3 font-bold text-[#212529]">
         <p>Album Mosaic</p>
         <hr class="w-full">
         <CirclePlus class="w-full mt-5" />
