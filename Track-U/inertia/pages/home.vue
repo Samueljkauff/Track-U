@@ -18,7 +18,7 @@
 <script lang="ts">
 import { Head } from '@inertiajs/vue3';
 import AlbumShowcase from '~/components/AlbumShowcase.vue';
-import DotNav from '~/components/DotNAv.vue';
+import DotNav from '~/components/DotNav.vue';
 import NowListening from '~/components/NowListening.vue';
 import Recents from '~/components/Recents.vue';
 import Topsters from '~/components/Topsters.vue';

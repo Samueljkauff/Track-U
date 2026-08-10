@@ -3,7 +3,6 @@
         <p>Album Mosaic</p>
         <hr class="w-full">
         <CirclePlus class="w-full mt-5" />
-        mosaic generator?
     </div>
 </template>
 

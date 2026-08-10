@@ -28,7 +28,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .active {
     box-shadow: 0px 0px 105px 45px rgba(54, 155, 89, 0.9);
     animation: pulse 5s ease-in-out infinite;
