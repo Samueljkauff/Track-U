@@ -4,8 +4,8 @@
             v-for="i in tabs"
             :key="i"
             class="w-2 h-2 rounded-md m-1 hover:cursor-pointer transition-colors duration-300"
-            :class="selected === i ? 'bg-[#212529]' : 'bg-[#454d51]'"
-            @click="$emit('update:modelValue', selected = i, console.log(selected))"
+            :class="modelValue === i - 1 ? 'bg-[#212529]' : 'bg-[#454d51]'"
+            @click="$emit('update:modelValue', i - 1)"
         ></div>
     </div>
 </template>
@@ -14,7 +14,7 @@
 export default {
     data() {
         return {
-            selected: 1,
+            selected: 0,
         }
     },
     props: {

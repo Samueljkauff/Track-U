@@ -4,12 +4,12 @@
     <div class="segment col-span-2 h-full grid grid-col-3 gap-3 min-h-0">
       <NowListening class="min-h-0 col-span-2" />
       <div class="h-full flex flex-col">
-        <component :is="entertainmentZone[selectedZone-1]" />
+        <component :is="entertainmentZone[selectedZone]" />
         <DotNav :tabs="entertainmentZone.length" v-model="selectedZone" class="mt-auto" />
       </div>
       <Topsters class="w-auto grid grid-cols-2 gap-3 flex-1 min-h-0" />
     </div>
-    <div class="segment">
+    <div class="segment"> 
       <Recents />
     </div>
   </div>
@@ -30,7 +30,7 @@ export default {
   data() {
     return {
       entertainmentZone: [AlbumShowcase, Pong, Snake],
-      selectedZone: 1,
+      selectedZone: 0,
     }
   },
   components: {
