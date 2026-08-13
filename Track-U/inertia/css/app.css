@@ -210,9 +210,9 @@ textarea[data-invalid='true'] + div {
 }
 
 button {
-  background: var(--gray-12);
-  color: #fff;
-  border: none;
+  background: none;
+  border-radius: .25rem;
+  color: #212529;
   padding: 10px;
   font-weight: 500;
 }
