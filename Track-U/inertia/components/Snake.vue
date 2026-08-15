@@ -3,7 +3,7 @@
         <div v-for="i in boardSize" :class="
         i === appleCords
             ? 'bg-[#82302a]'
-            : i === snakeLocation
+            : snakeLocation.includes(i)
                 ? 'bg-black'
                 : ''
     " class="border"></div>
@@ -22,8 +22,11 @@
             return {
                 boardSize: 170,
                 appleCords: 0,
-                snakeLocation: 0,
-                direction: -10,
+                snakeLocation: [0, 0, 0],
+                direction: {
+                    name: 'up',
+                    math: -10,
+                },
                 gameLoop: null as ReturnType<typeof setInterval> | null,
                 alive: true,
             }
@@ -40,15 +43,24 @@
             },
             startGameLoop() {
                 this.appleCords = this.getRandomInt(1, 170);
-                this.snakeLocation = this.boardSize/2; 
+                this.snakeLocation[0] = this.boardSize/2;
+                this.snakeLocation[1] = (this.boardSize/2)-10;
+                this.snakeLocation[2] = (this.boardSize/2)-20;
                 this.alive = true;
 
                 this.gameLoop = setInterval(()=> {
-                    let nextLocation = this.snakeLocation + this.direction;
+                    let nextLocation = this.snakeLocation[0] + this.direction.math;
+                    let pushLocation = this.snakeLocation[0];
                     if(!this.isPositionValid()) {
                         this.alive = false;
                     } else {
-                        this.snakeLocation = nextLocation;
+                        for(let i = 0; i < this.snakeLocation.length; i++) {
+                            if(i < this.snakeLocation.length){
+                                pushLocation = this.snakeLocation[i];
+                                this.snakeLocation[i] = nextLocation;
+                                nextLocation = pushLocation;
+                            }
+                        }
                     }
                 }, 180)
 
@@ -59,26 +71,50 @@
             handleMovement(Event: KeyboardEvent) {
                 switch(Event.key) {
                     case 'ArrowUp':
-                        this.direction = -10;
+                        if(this.direction.name === 'down') {
+                            break;
+                        }
+                        this.direction = {
+                            name: 'up',
+                            math: -10,
+                        };
                         break;
                     case 'ArrowDown':
-                        this.direction = 10;
+                        if(this.direction.name === 'up') {
+                            break;
+                        }
+                        this.direction = {
+                            name: 'down',
+                            math: 10,
+                        };
                         break;
                     case 'ArrowLeft':
-                        this.direction = -1;
+                        if(this.direction.name === 'right') {
+                            break;
+                        }
+                        this.direction = {
+                            name: 'left',
+                            math: -1,
+                        };
                         break;
                     case 'ArrowRight':
-                        this.direction = 1;
+                        if(this.direction.name === 'left') {
+                            break;
+                        }
+                        this.direction = {
+                            name: 'right',
+                            math: 1,
+                        };
                         break;
                     default:
                         break;
                 }
             },
             isPositionValid(): boolean {
-                let nextLocation = this.snakeLocation + this.direction;
+                let nextLocation = this.snakeLocation[0] + this.direction.math;
                 let isValid = true;
 
-                if(nextLocation > 170 || nextLocation < 1 || (this.snakeLocation%10 === 0 && nextLocation%10 === 1) || (nextLocation%10 === 0 && this.snakeLocation%10 === 1)) {
+                if(nextLocation > 170 || nextLocation < 1 || (this.snakeLocation[0]%10 === 0 && nextLocation%10 === 1) || (nextLocation%10 === 0 && this.snakeLocation[0]%10 === 1)) {
                     isValid = false;
                 }
 
