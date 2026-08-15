@@ -1,6 +1,12 @@
 <template>
     <div class="h-full w-full grid grid-cols-10 pt-8 pb-8">
-        <div v-for="i in 170" :class="i === appleCords ? 'bg-[#82302a]' : ''" class="border">{{ appleCords }}</div>
+        <div v-for="i in boardSize" :class="
+        i === appleCords
+            ? 'bg-[#82302a]'
+            : i === snakeSpawn
+                ? 'bg-black'
+                : ''
+    " class="border"></div>
     </div>
 </template>
 
@@ -8,7 +14,9 @@
     export default {
         data() {
             return {
+                boardSize: 170,
                 appleCords: 0,
+                snakeSpawn: 0,
             }
         },
         mounted() {
@@ -22,6 +30,7 @@
             },
             startGameLoop() {
                 this.appleCords = this.getRandomInt(1, 170);
+                this.snakeSpawn = this.boardSize/2;
             }
         }
     }
