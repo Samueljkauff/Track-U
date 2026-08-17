@@ -1,6 +1,6 @@
 <template>
     <p class="pt-2">Score: {{ score }}</p>
-    <div class="h-full w-full grid grid-cols-10 pt-2 pb-8">
+    <div class="relative h-full w-full grid grid-cols-10 pt-2 pb-8">
         <div v-for="i in boardSize" :class="
         i === appleCords
             ? 'bg-[#82302a]'
@@ -10,7 +10,7 @@
     " class="border border-[#212529]"></div>
         <div
             v-if="!alive"
-            class="absolute z-10 bg-white px-4 py-2"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 border bg-(--surface-secondary) px-4 py-3"
         >
             Game Over
         </div>
