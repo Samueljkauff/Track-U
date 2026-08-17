@@ -3,8 +3,8 @@
         <div class="flex flex-col h-full items-center pr-3 pt-3 font-bold text-[#212529]">
             <p>{{ entertainmentZone[selectedZone].name }}</p>
             <hr class="w-full">
-                <component :is="entertainmentZone[selectedZone].component" />
-            <button class="mt-auto mb-3 container-shadow">
+                <component :playing="playing" @update:playing="playing = $event" :is="entertainmentZone[selectedZone].component" />
+            <button class="mt-auto mb-3 container-shadow" @click="clickAction()">
                 {{ entertainmentZone[selectedZone].buttonType }}
             </button>
             <DotNav :tabs="entertainmentZone.length" v-model="selectedZone" class="mt-auto" />
@@ -42,8 +42,14 @@ export default {
         name: 'Snake',
         component: Snake,
         buttonType: 'Play',
-    }],
+    }] as Sections[],
       selectedZone: 0,
+      playing: false,
+    }
+  },
+  methods: {
+    clickAction() {
+        this.playing = true;
     }
   },
   components: {
