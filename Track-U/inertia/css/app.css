@@ -217,7 +217,8 @@ button {
   font-weight: 500;
 }
 button:hover {
-  background: var(--gray-10);
+  background: #212529;
+  color: white;
 }
 
 nav {

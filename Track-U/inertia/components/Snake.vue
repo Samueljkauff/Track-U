@@ -1,12 +1,13 @@
 <template>
-    <div class="h-full w-full grid grid-cols-10 pt-8 pb-8">
+    <p class="pt-2">Score: {{ score }}</p>
+    <div class="h-full w-full grid grid-cols-10 pt-2 pb-8">
         <div v-for="i in boardSize" :class="
         i === appleCords
             ? 'bg-[#82302a]'
             : snakeLocation.includes(i)
-                ? 'bg-black'
+                ? 'bg-black border-none'
                 : ''
-    " class="border"></div>
+    " class="border border-[#212529]"></div>
         <div
             v-if="!alive"
             class="absolute z-10 bg-white px-4 py-2"
@@ -27,6 +28,7 @@
                     name: 'up',
                     math: -10,
                 },
+                score: 0,
                 gameLoop: null as ReturnType<typeof setInterval> | null,
                 alive: true,
             }
@@ -89,10 +91,11 @@
                         this.handleAppleEat();
                         }
                     }
-                }, 100)
+                }, 150)
             },
             spawnGame() {
                 this.appleCords = this.getRandomInt(1, 170);
+                this.score = 0;
                 this.snakeLocation = [0, 0, 0];
                 this.snakeLocation[0] = this.boardSize/2;
                 this.snakeLocation[1] = (this.boardSize/2)-this.direction.math;
@@ -147,6 +150,7 @@
                 if(this.snakeLocation.includes(this.appleCords)){
                     this.appleCords = this.getRandomInt(1, 170);
                     this.snakeLocation[this.snakeLocation.length] = this.snakeLocation[this.snakeLocation.length-1] + this.direction.math;
+                    this.score++;
                 }
             },
             handleSnakeCollision(): boolean {
