@@ -27,7 +27,7 @@ interface Sections {
 
 export default {
     mounted() {
-        window.addEventListener('keydown', this.clickAction);
+        window.addEventListener('keydown', this.clickAction)
     },
     data() {
     return {
