@@ -5,12 +5,12 @@
         i === appleCords
             ? 'bg-[#82302a]'
             : snakeLocation.includes(i)
-                ? 'bg-black border-none'
+                ? 'bg-[#212529] border-none'
                 : ''
     " class="border border-[#212529]"></div>
         <div
             v-if="!alive"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 border bg-(--surface-secondary) px-4 py-3"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 border bg-(--surface-secondary) px-10 py-4 text-2xl whitespace-nowrap"
         >
             Game Over
         </div>
