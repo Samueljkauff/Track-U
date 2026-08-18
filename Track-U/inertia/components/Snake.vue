@@ -49,6 +49,9 @@
         mounted() {
             window.addEventListener('keydown', this.handleMovement);
         },
+        beforeUnmount() {
+            window.removeEventListener('keydown', this.handleMovement);
+        },
         methods: {
             getRandomInt(min: number, max: number): number {
                 const minCeiled = Math.ceil(min);

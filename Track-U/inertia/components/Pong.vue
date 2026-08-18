@@ -14,15 +14,31 @@
                 boardsize: 0 as number,
                 paddleX: 0 as number,
                 paddleWidth: 0 as number,
+                resizeObserver: null as ResizeObserver | null,
             }
         },
         mounted() {
-            this.boardsize = (this.$refs.board as HTMLElement).clientWidth
+        const board = this.$refs.board as HTMLElement;
+
+        this.resizeObserver = new ResizeObserver(() => {
+            this.boardsize = board.clientWidth;
+            this.paddleWidth = this.boardsize * 0.20;
+
+            if (this.paddleX > this.maxPaddleX) {
+                this.paddleX = this.maxPaddleX;
+            }
+        });
+
+        this.resizeObserver.observe(board);
             this.paddleX = (this.$refs.board as HTMLElement).clientWidth/2-(this.$refs.paddle as HTMLElement).clientWidth/2;
             this.paddleWidth = (this.$refs.paddle as HTMLElement).clientWidth;
             console.log(this.boardsize)
     
             window.addEventListener('keydown', this.handleMovement);
+        },
+        beforeUnmount() {
+            this.resizeObserver?.disconnect();
+            window.removeEventListener('keydown', this.handleMovement);
         },
 
         computed: {
@@ -33,6 +49,10 @@
             paddleStep() {
                 return this.boardsize / 20;
             },
+        },
+
+        watch: {
+
         },
         methods: {
             handleMovement(Event: KeyboardEvent) {
