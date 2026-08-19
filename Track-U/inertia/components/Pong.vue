@@ -1,8 +1,8 @@
 <template>
     <div class="relative h-full w-full flex flex-col mt-8 mb-8 border-x" ref="board">
-        <div class="absolute w-[20%] h-2 bg-black top-0 left-1/2 -translate-x-1/2"></div>
-        <div class="absolute w-2 h-2 bg-black top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
-        <div class="absolute w-[20%] h-2 bg-black bottom-0" ref="paddle" :style="{ left: `${paddleX}px` }"></div>
+        <div class="absolute w-[20%] h-2 bg-[#212529] top-0 left-1/2 -translate-x-1/2"></div>
+        <div class="absolute w-2 h-2 bg-[#212529] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute w-[20%] h-2 bg-[#212529] bottom-0" ref="paddle" :style="{ left: `${paddleX}px` }"></div>
     </div>
 </template>
 
@@ -32,7 +32,6 @@
         this.resizeObserver.observe(board);
             this.paddleX = (this.$refs.board as HTMLElement).clientWidth/2-(this.$refs.paddle as HTMLElement).clientWidth/2;
             this.paddleWidth = (this.$refs.paddle as HTMLElement).clientWidth;
-            console.log(this.boardsize)
     
             window.addEventListener('keydown', this.handleMovement);
         },

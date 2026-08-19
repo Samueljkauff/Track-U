@@ -26,15 +26,12 @@ interface Sections {
 }
 
 export default {
-    mounted() {
-        window.addEventListener('keydown', this.clickAction)
-    },
     data() {
     return {
       entertainmentZone: [{
-        name: 'Mosaic',
-        component: AlbumShowcase,
-        buttonType: 'Lock',
+        name: 'Snake',
+        component: Snake,
+        buttonType: 'Play',
       },
     {
         name: 'Pong',
@@ -42,9 +39,9 @@ export default {
         buttonType: 'Play',
     },
     {
-        name: 'Snake',
-        component: Snake,
-        buttonType: 'Play',
+        name: 'Badges',
+        component: AlbumShowcase,
+        buttonType: 'Lock',
     }] as Sections[],
       selectedZone: 0,
       playing: false,

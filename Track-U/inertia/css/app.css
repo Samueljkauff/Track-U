@@ -81,19 +81,6 @@ header > div {
   align-items: center;
   height: 64px;
 }
-header nav {
-  display: flex;
-  align-items: center;
-  gap: 26px;
-}
-header nav a {
-  font-weight: 500;
-  color: var(--gray-8);
-}
-header nav a:hover,
-header nav a.current {
-  color: var(--gray-12);
-}
 
 /* Main */
 main {
