@@ -15,10 +15,11 @@ router.on('/').renderInertia('home', {}).as('home')
 
 router
   .group(() => {
-    router.get('signup', [controllers.NewAccount, 'create'])
+    // router.get('signup', [controllers.NewAccount, 'create'])
     router.post('signup', [controllers.NewAccount, 'store'])
 
-    router.get('login', [controllers.Session, 'create'])
+    // router.get('login', [controllers.Session, 'create'])
+    router.on('/login').renderInertia('auth/AuthPage', {})
     router.post('login', [controllers.Session, 'store'])
   })
   .use(middleware.guest())

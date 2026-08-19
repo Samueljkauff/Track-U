@@ -19,18 +19,6 @@ export interface Registry {
       errorResponse: unknown
     }
   }
-  'new_account.create': {
-    methods: ["GET","HEAD"]
-    pattern: '/signup'
-    types: {
-      body: {}
-      paramsTuple: []
-      params: {}
-      query: {}
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/new_account_controller').default['create']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/new_account_controller').default['create']>>>
-    }
-  }
   'new_account.store': {
     methods: ["POST"]
     pattern: '/signup'
@@ -41,18 +29,6 @@ export interface Registry {
       query: ExtractQuery<InferInput<(typeof import('#validators/user').signupValidator)>>
       response: ExtractResponse<Awaited<ReturnType<import('#controllers/new_account_controller').default['store']>>>
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/new_account_controller').default['store']>>> | { status: 422; response: { errors: SimpleError[] } }
-    }
-  }
-  'session.create': {
-    methods: ["GET","HEAD"]
-    pattern: '/login'
-    types: {
-      body: {}
-      paramsTuple: []
-      params: {}
-      query: {}
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/session_controller').default['create']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/session_controller').default['create']>>>
     }
   }
   'session.store': {
