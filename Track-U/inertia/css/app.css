@@ -177,7 +177,7 @@ button {
   background: none;
   border-radius: .25rem;
   border: .25ps solid var(--color-gray-400);
-  color: #212529;
+  color: #f8f9fa;
   padding: 10px;
   font-weight: 500;
 }

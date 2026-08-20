@@ -4,7 +4,7 @@
             <p>{{ entertainmentZone[selectedZone].name }}</p>
             <hr class="w-full">
                 <component :playing="playing" @update:playing="playing = $event" :is="entertainmentZone[selectedZone].component" />
-            <button class="mt-auto mb-3 container-shadow w-full" @click="clickAction()">
+            <button class="mt-auto mb-3 container-shadow w-full text-[#212529]!" @click="clickAction()">
                 {{ entertainmentZone[selectedZone].buttonType }}
             </button>
             <DotNav :tabs="entertainmentZone.length" v-model="selectedZone" class="mt-auto" />

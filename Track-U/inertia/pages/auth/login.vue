@@ -7,10 +7,10 @@ import { Form } from '@adonisjs/inertia/vue'
     <div class="mb-auto">
       <p class="text-6xl font-bold text-[#f8f9fa]">Login</p>
       <hr class="text-gray-400">
-      <p class="">Enter your details below to login to your account</p>
+      <p class="text-gray-300">Enter your details below to login to your account</p>
     </div>
 
-    <div class="mb-auto">
+    <div class="mt-10">
       <Form v-slot="{ processing, errors }" route="session.store">
         <div>
           <label for="email">Email</label>
@@ -35,9 +35,9 @@ import { Form } from '@adonisjs/inertia/vue'
           />
           <div v-if="errors.password">{{ errors.password }}</div>
         </div>
-
+        
         <div>
-          <button type="submit" class="button" :disabled="processing">Login</button>
+          <button type="submit" class="w-full mt-10" :disabled="processing">Login</button>
         </div>
       </Form>
     </div>

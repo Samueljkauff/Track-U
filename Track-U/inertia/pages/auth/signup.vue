@@ -4,15 +4,15 @@ import { Form } from '@adonisjs/inertia/vue'
 
 <template>
   <div class="">
-    <div>
-      <h1>Signup</h1>
-      <p>Enter your details below to create your account</p>
+    <div class="mb-10">
+      <h1 class="text-2xl text-[#212529]">Signup</h1>
+      <p class="text-gray-800">Enter your details below to create your account</p>
     </div>
 
     <div>
       <Form v-slot="{ processing, errors }" route="new_account.store">
         <div>
-          <label for="fullName">Full name</label>
+          <label for="fullName" class="text-[#212529]!">Full name</label>
           <input
             id="fullName"
             type="text"
@@ -23,7 +23,7 @@ import { Form } from '@adonisjs/inertia/vue'
         </div>
 
         <div>
-          <label for="email">Email</label>
+          <label for="email" class="text-[#212529]!">Email</label>
           <input
             id="email"
             type="email"
@@ -35,7 +35,7 @@ import { Form } from '@adonisjs/inertia/vue'
         </div>
 
         <div>
-          <label for="password">Password</label>
+          <label for="password" class="text-[#212529]!">Password</label>
           <input
             id="password"
             type="password"
@@ -47,7 +47,7 @@ import { Form } from '@adonisjs/inertia/vue'
         </div>
 
         <div>
-          <label for="passwordConfirmation">Confirm password</label>
+          <label for="passwordConfirmation" class="text-[#212529]!">Confirm password</label>
           <input
             id="passwordConfirmation"
             type="password"
@@ -59,7 +59,7 @@ import { Form } from '@adonisjs/inertia/vue'
         </div>
 
         <div>
-          <button type="submit" class="button" :disabled="processing">Sign up</button>
+          <button type="submit" class="text-[#212529]! w-full hover:bg-gray-400!" :disabled="processing">Sign up</button>
         </div>
       </Form>
     </div>

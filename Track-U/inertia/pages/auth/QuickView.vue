@@ -2,7 +2,7 @@
     <div class="form-container bg-(--surface) rounded-xs p-8 text-[#f8f9fa] container-shadow w-[75%]">
         <p class="text-2xl font-semibold">Quick View</p>
         <hr class="text-gray-400">
-        <p>Quick view is for users who want a demonstration of the scope of the app before or instead of creating an account. The data displayed belongs to <a class="text-[#04DF72]" href="">my</a> Spotify account.</p>
-        <button>Quick View</button>
+        <p class="text-gray-300">Quick view is for users who want a demonstration of the scope of the app before or instead of creating an account. The data displayed belongs to <a class="text-[#04DF72]" href="">my</a> Spotify account.</p>
+        <button class="mt-10">Quick View</button>
     </div>
 </template>
