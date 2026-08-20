@@ -3,13 +3,14 @@ import { Form } from '@adonisjs/inertia/vue'
 </script>
 
 <template>
-    <div class="form-container bg-(--surface) rounded-xs p-8 text-[#f8f9fa] container-shadow h-[75%] w-full">
-    <div>
-      <h1>Login</h1>
-      <p>Enter your details below to login to your account</p>
+    <div class="form-container bg-(--surface) rounded-xs p-8 text-[#f8f9fa] container-shadow w-[75%]">
+    <div class="mb-auto">
+      <p class="text-6xl font-bold text-[#f8f9fa]">Login</p>
+      <hr class="text-gray-400">
+      <p class="">Enter your details below to login to your account</p>
     </div>
 
-    <div>
+    <div class="mb-auto">
       <Form v-slot="{ processing, errors }" route="session.store">
         <div>
           <label for="email">Email</label>

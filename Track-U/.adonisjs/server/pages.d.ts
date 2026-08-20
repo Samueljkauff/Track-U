@@ -16,5 +16,6 @@ declare module '@adonisjs/inertia/types' {
     'errors/server_error': ExtractProps<(typeof import('../../inertia/pages/errors/server_error.vue'))['default']>
     'home': ExtractProps<(typeof import('../../inertia/pages/home.vue'))['default']>
     'auth/AuthPage': ExtractProps<(typeof import('../../inertia/pages/auth/AuthPage.vue'))['default']>
+    'auth/QuickView': ExtractProps<(typeof import('../../inertia/pages/auth/QuickView.vue'))['default']>
   }
 }
