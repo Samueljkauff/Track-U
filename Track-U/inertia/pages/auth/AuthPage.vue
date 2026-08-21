@@ -1,10 +1,10 @@
 <template>
-      <div class="grid grid-cols-2 h-full m-10 gap-3 segment">
-        <div class="h-full flex flex-col gap-3 m-3 items-center justify-center">
+      <div class="grid grid-cols-2 h-full m-1 p-10 gap-3 segment">
+        <div class="h-full flex flex-col gap-3 items-center justify-center">
             <Login />
             <QuickView />
         </div>
-        <div class="form-container h-full w-full flex flex-col gap-3 m-3 items-center justify-center"> 
+        <div class="form-container h-full w-full flex flex-col gap-3 items-center justify-center"> 
             <Signup />
         </div>
       </div>

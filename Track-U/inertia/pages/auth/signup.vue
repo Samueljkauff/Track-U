@@ -3,9 +3,10 @@ import { Form } from '@adonisjs/inertia/vue'
 </script>
 
 <template>
-  <div class="">
+  <div>
     <div class="mb-10">
-      <h1 class="text-2xl text-[#212529]">Signup</h1>
+      <h1 class="text-xl text-[#212529]">Signup</h1>
+      <hr>
       <p class="text-gray-800">Enter your details below to create your account</p>
     </div>
 
