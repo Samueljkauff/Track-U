@@ -1,5 +1,5 @@
 <template>
-      <div class="grid grid-cols-2 h-full m-1 gap-3 segment">
+      <div class="grid grid-cols-2 h-full m-10 gap-3 segment">
         <div class="h-full flex flex-col gap-3 m-3 items-center justify-center">
             <Login />
             <QuickView />

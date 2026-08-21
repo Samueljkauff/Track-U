@@ -14,6 +14,7 @@ import { Form } from '@adonisjs/inertia/vue'
         <div>
           <label for="fullName" class="text-[#212529]!">Full name</label>
           <input
+            class="border-[#212529]!"
             id="fullName"
             type="text"
             name="fullName"
@@ -25,6 +26,7 @@ import { Form } from '@adonisjs/inertia/vue'
         <div>
           <label for="email" class="text-[#212529]!">Email</label>
           <input
+            class="border-[#212529]!"
             id="email"
             type="email"
             name="email"
@@ -37,6 +39,7 @@ import { Form } from '@adonisjs/inertia/vue'
         <div>
           <label for="password" class="text-[#212529]!">Password</label>
           <input
+            class="border-[#212529]!"
             id="password"
             type="password"
             name="password"
@@ -49,6 +52,7 @@ import { Form } from '@adonisjs/inertia/vue'
         <div>
           <label for="passwordConfirmation" class="text-[#212529]!">Confirm password</label>
           <input
+            class="border-[#212529]!"
             id="passwordConfirmation"
             type="password"
             name="passwordConfirmation"
@@ -59,7 +63,7 @@ import { Form } from '@adonisjs/inertia/vue'
         </div>
 
         <div>
-          <button type="submit" class="text-[#212529]! w-full hover:bg-gray-400!" :disabled="processing">Sign up</button>
+          <button type="submit" class="text-[#212529]! w-full hover:bg-gray-400! border-[#212529]!" :disabled="processing">Sign up</button>
         </div>
       </Form>
     </div>

@@ -160,6 +160,7 @@ input {
   border: .25px solid var(--gray-4);
   width: 100%;
   padding: 0 16px;
+  border-radius: .25rem;
 }
 input[data-invalid='true'],
 textarea[data-invalid='true'] {
@@ -176,7 +177,7 @@ textarea[data-invalid='true'] + div {
 button {
   background: none;
   border-radius: .25rem;
-  border: .25ps solid var(--color-gray-400);
+  border: .25px solid var(--color-gray-400);
   color: #f8f9fa;
   padding: 10px;
   font-weight: 500;
