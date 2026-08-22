@@ -12,6 +12,24 @@ const routes = {
     tokens: [{"old":"/","type":0,"val":"/","end":""}],
     types: placeholder as Registry['home']['types'],
   },
+  'TopSongs': {
+    methods: ["GET","HEAD"],
+    pattern: '/top-songs',
+    tokens: [{"old":"/top-songs","type":0,"val":"top-songs","end":""}],
+    types: placeholder as Registry['TopSongs']['types'],
+  },
+  'TopArtists': {
+    methods: ["GET","HEAD"],
+    pattern: '/top-artists',
+    tokens: [{"old":"/top-artists","type":0,"val":"top-artists","end":""}],
+    types: placeholder as Registry['TopArtists']['types'],
+  },
+  'Shop': {
+    methods: ["GET","HEAD"],
+    pattern: '/shop',
+    tokens: [{"old":"/shop","type":0,"val":"shop","end":""}],
+    types: placeholder as Registry['Shop']['types'],
+  },
   'new_account.store': {
     methods: ["POST"],
     pattern: '/signup',

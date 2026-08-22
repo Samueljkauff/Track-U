@@ -19,6 +19,42 @@ export interface Registry {
       errorResponse: unknown
     }
   }
+  'TopSongs': {
+    methods: ["GET","HEAD"]
+    pattern: '/top-songs'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'TopArtists': {
+    methods: ["GET","HEAD"]
+    pattern: '/top-artists'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'Shop': {
+    methods: ["GET","HEAD"]
+    pattern: '/shop'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
   'new_account.store': {
     methods: ["POST"]
     pattern: '/signup'

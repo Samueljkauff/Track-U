@@ -5,15 +5,24 @@ type ParamValue = string | number | bigint | boolean
 export type ScannedRoutes = {
   ALL: {
     'home': { paramsTuple?: []; params?: {} }
+    'TopSongs': { paramsTuple?: []; params?: {} }
+    'TopArtists': { paramsTuple?: []; params?: {} }
+    'Shop': { paramsTuple?: []; params?: {} }
     'new_account.store': { paramsTuple?: []; params?: {} }
     'session.store': { paramsTuple?: []; params?: {} }
     'session.destroy': { paramsTuple?: []; params?: {} }
   }
   GET: {
     'home': { paramsTuple?: []; params?: {} }
+    'TopSongs': { paramsTuple?: []; params?: {} }
+    'TopArtists': { paramsTuple?: []; params?: {} }
+    'Shop': { paramsTuple?: []; params?: {} }
   }
   HEAD: {
     'home': { paramsTuple?: []; params?: {} }
+    'TopSongs': { paramsTuple?: []; params?: {} }
+    'TopArtists': { paramsTuple?: []; params?: {} }
+    'Shop': { paramsTuple?: []; params?: {} }
   }
   POST: {
     'new_account.store': { paramsTuple?: []; params?: {} }
