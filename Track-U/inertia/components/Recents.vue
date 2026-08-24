@@ -2,6 +2,7 @@
   <div class="flex flex-col h-full p-3 gap-3">
     <div class="bg-(--surface) flex flex-col rounded-xs text-[#f8f9fa] container-shadow flex-1 items-center">
         <p class="m-3 font-semibold text-xl">Listening History</p>
+        <hr class="w-[90%]">
     </div>
 
   </div>
