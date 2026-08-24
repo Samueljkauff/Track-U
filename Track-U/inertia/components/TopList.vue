@@ -6,6 +6,7 @@
             <div v-for="items in terms" class="flex flex-col h-full container-shadow bg-(--surface) text-lg p-3 items-center text-[#f8f9fa] font-bold">
                 {{ items }}
                 <hr class="w-[95%]">
+                <div></div>
             </div>
         </div>
 </template>
@@ -14,7 +15,7 @@
     export default {
         data() {
             return {
-                terms: ['Past 1 Month', 'Past 6 Month', 'Past 1 Year']
+                terms: ['Past 1 Month', 'Past 6 Month', 'Past 1 Year'],
             }
         },
         props: {
