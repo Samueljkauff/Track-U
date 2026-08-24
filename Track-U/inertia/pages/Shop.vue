@@ -14,10 +14,12 @@
             {{ 12 }}
           </p>
           </div>
-          <div class="mt-5 h-[90%] w-[90%] segment grid grid-cols-5">
-              <div class="container-shadow bg-(--surface)">
+          <div class="mt-5 h-[90%] w-[90%] segment grid grid-cols-5 grid-rows-3 gap-3 p-3">
+              <div class="container-shadow bg-(--surface) col-span-3 row-span-2">
 
               </div>
+              <div class="container-shadow bg-(--surface) row-span-3 col-span-2"></div>
+              <div class="container-shadow bg-(--surface) col-span-3"></div>
           </div>
     </div>
     </div>
