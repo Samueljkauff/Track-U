@@ -2,12 +2,12 @@
 <Head title="Shop" />
   <div class="grid gap-4 w-auto h-full m-1">
     <div class="segment col-span-2 h-full flex flex-col gap-3 min-h-0">
-        <div class="container-shadow m-3 bg-(--surface) flex flex-col items-center text-3xl pt-5 text-[#f8f9fa] font-bold h-full">
+        <div class="container-shadow m-3 bg-(--surface) flex flex-col items-center text-3xl pt-5 text-[#f8f9fa] h-full">
           <div class="grid grid-cols-3 text-center w-full">
           <p>
             Points: {{ 1 }}
           </p>
-          <p>
+          <p class="font-bold">
             Shop
           </p>
           <p>

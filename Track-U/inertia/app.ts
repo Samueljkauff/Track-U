@@ -6,8 +6,10 @@ import { createInertiaApp } from '@inertiajs/vue3'
 import { TuyauProvider } from '@adonisjs/inertia/vue'
 import { createApp, type DefineComponent, h } from 'vue'
 import { resolvePageComponent } from '@adonisjs/inertia/helpers'
+import { createPinia }from 'pinia'
 
 const appName = import.meta.env.VITE_APP_NAME || 'AdonisJS'
+const pinia = createPinia()
 
 createInertiaApp({
   title: (title) => (title ? `${title} - ${appName}` : appName),
@@ -21,6 +23,7 @@ createInertiaApp({
   setup({ el, App, props, plugin }) {
     createApp({ render: () => h(TuyauProvider, { client }, { default: () => h(App, props) }) })
       .use(plugin)
+      .use(pinia)
       .mount(el)
   },
   progress: {
