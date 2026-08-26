@@ -19,7 +19,7 @@
           :href="item.route"
           class="flex flex-1 justify-center items-center h-full hover:bg-linear-to-t from-gray-600 to-(--surface)"
         >
-          {{ item.name }}
+          {{ index === NavItems.length - 2 ? accountLabel : item.name }}
         </Link>
       </li>
     </ul>
@@ -29,6 +29,8 @@
 <script lang="ts">
 import { Disc3, LucideIcon } from '@lucide/vue';
 import { Link } from '@inertiajs/vue3';
+import { useAppStore } from '~/stores/appStore';
+import { mapStores } from 'pinia';
 
 interface NavItem {
   name: string,
@@ -48,31 +50,42 @@ export default {
           },
           {
               name: 'Home',
-              icon: Disc3,
+              icon: '',
               route: '/',
           },
           {
               name: 'Top Songs',
-              icon: Disc3,
+              icon: '',
               route: '/top-songs',
           },
           {
               name: 'Top Artists',
-              icon: Disc3,
+              icon: '',
               route: '/top-artists',
           },
           {
               name: 'Shop',
-              icon: Disc3,
+              icon: '',
               route: '/shop',
           },
           {
-              name: 'Sign In',
-              icon: Disc3,
+              name: '',
+              icon: '',
               route: '/login',
           },
       ] as NavItem[],
     };
+  },
+  computed: {
+    ...mapStores(useAppStore),
+
+    accountLabel() {
+      if(this.appStore.isQuickView) {
+        return 'Quick View';
+      } else {
+        return this.appStore.username;
+      }
+    }
   },
   components: {
     Link

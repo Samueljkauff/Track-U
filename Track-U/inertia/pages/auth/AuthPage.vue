@@ -10,9 +10,16 @@
       </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
 import Login from './login.vue';
 import Signup from './signup.vue';
 import QuickView from './QuickView.vue';
 
+export default {
+    components: {
+        Login,
+        Signup,
+        QuickView
+    }
+}
 </script>
