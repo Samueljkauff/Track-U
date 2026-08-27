@@ -5,6 +5,7 @@ export interface ApiDefinition {
   newAccount: {
     store: typeof routes['new_account.store']
   }
+  login: typeof routes['login']
   session: {
     store: typeof routes['session.store']
     destroy: typeof routes['session.destroy']

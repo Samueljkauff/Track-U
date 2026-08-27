@@ -5,6 +5,7 @@ type ParamValue = string | number | bigint | boolean
 export type ScannedRoutes = {
   ALL: {
     'new_account.store': { paramsTuple?: []; params?: {} }
+    'login': { paramsTuple?: []; params?: {} }
     'session.store': { paramsTuple?: []; params?: {} }
     'session.destroy': { paramsTuple?: []; params?: {} }
     'home': { paramsTuple?: []; params?: {} }
@@ -19,6 +20,7 @@ export type ScannedRoutes = {
     'session.destroy': { paramsTuple?: []; params?: {} }
   }
   GET: {
+    'login': { paramsTuple?: []; params?: {} }
     'home': { paramsTuple?: []; params?: {} }
     'TopSongs': { paramsTuple?: []; params?: {} }
     'TopArtists': { paramsTuple?: []; params?: {} }
@@ -26,6 +28,7 @@ export type ScannedRoutes = {
     'Profile': { paramsTuple?: []; params?: {} }
   }
   HEAD: {
+    'login': { paramsTuple?: []; params?: {} }
     'home': { paramsTuple?: []; params?: {} }
     'TopSongs': { paramsTuple?: []; params?: {} }
     'TopArtists': { paramsTuple?: []; params?: {} }
