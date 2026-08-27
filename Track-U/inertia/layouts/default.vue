@@ -1,11 +1,19 @@
 <script setup lang="ts">
-import { watch } from 'vue'
+
+import { computed, watch } from 'vue'
 import { usePage } from '@inertiajs/vue3'
 import { toast, Toaster } from 'vue-sonner'
 import type { Data } from '@generated/data'
 import NavBar from '~/components/NavBar.vue'
+import { useAppStore } from '~/stores/appStore'
 
 const page = usePage<Data.SharedProps>()
+
+const appStore = useAppStore()
+
+const showNavBar = computed(() => {
+  return appStore.isQuickView || !!page.props.user
+})
 
 watch(
   () => page.url,
@@ -28,12 +36,10 @@ watch(
 
 <template>
   <header>
-      <NavBar></NavBar>
+    <NavBar v-if="showNavBar" />
   </header>
-
   <main>
     <slot />
   </main>
-
   <Toaster position="top-center" theme="dark" />
 </template>
