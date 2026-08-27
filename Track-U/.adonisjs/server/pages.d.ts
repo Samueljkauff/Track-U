@@ -17,6 +17,7 @@ declare module '@adonisjs/inertia/types' {
     'errors/not_found': ExtractProps<(typeof import('../../inertia/pages/errors/not_found.vue'))['default']>
     'errors/server_error': ExtractProps<(typeof import('../../inertia/pages/errors/server_error.vue'))['default']>
     'home': ExtractProps<(typeof import('../../inertia/pages/home.vue'))['default']>
+    'Profile': ExtractProps<(typeof import('../../inertia/pages/Profile.vue'))['default']>
     'Shop': ExtractProps<(typeof import('../../inertia/pages/Shop.vue'))['default']>
     'TopArtists': ExtractProps<(typeof import('../../inertia/pages/TopArtists.vue'))['default']>
     'TopSongs': ExtractProps<(typeof import('../../inertia/pages/TopSongs.vue'))['default']>

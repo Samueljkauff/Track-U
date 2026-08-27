@@ -235,6 +235,10 @@ nav {
     border-width: 1px;
 }
 
+.toast {
+  background-color: var(--surface);
+}
+
 @keyframes scale-up {
   from {
     transform: scale(0.7);

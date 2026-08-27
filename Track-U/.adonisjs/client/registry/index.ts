@@ -6,6 +6,24 @@ import type { ApiDefinition } from './tree.d.ts'
 const placeholder: any = {}
 
 const routes = {
+  'new_account.store': {
+    methods: ["POST"],
+    pattern: '/signup',
+    tokens: [{"old":"/signup","type":0,"val":"signup","end":""}],
+    types: placeholder as Registry['new_account.store']['types'],
+  },
+  'session.store': {
+    methods: ["POST"],
+    pattern: '/login',
+    tokens: [{"old":"/login","type":0,"val":"login","end":""}],
+    types: placeholder as Registry['session.store']['types'],
+  },
+  'session.destroy': {
+    methods: ["POST"],
+    pattern: '/logout',
+    tokens: [{"old":"/logout","type":0,"val":"logout","end":""}],
+    types: placeholder as Registry['session.destroy']['types'],
+  },
   'home': {
     methods: ["GET","HEAD"],
     pattern: '/',
@@ -30,23 +48,11 @@ const routes = {
     tokens: [{"old":"/shop","type":0,"val":"shop","end":""}],
     types: placeholder as Registry['Shop']['types'],
   },
-  'new_account.store': {
-    methods: ["POST"],
-    pattern: '/signup',
-    tokens: [{"old":"/signup","type":0,"val":"signup","end":""}],
-    types: placeholder as Registry['new_account.store']['types'],
-  },
-  'session.store': {
-    methods: ["POST"],
-    pattern: '/login',
-    tokens: [{"old":"/login","type":0,"val":"login","end":""}],
-    types: placeholder as Registry['session.store']['types'],
-  },
-  'session.destroy': {
-    methods: ["POST"],
-    pattern: '/logout',
-    tokens: [{"old":"/logout","type":0,"val":"logout","end":""}],
-    types: placeholder as Registry['session.destroy']['types'],
+  'Profile': {
+    methods: ["GET","HEAD"],
+    pattern: '/profile',
+    tokens: [{"old":"/profile","type":0,"val":"profile","end":""}],
+    types: placeholder as Registry['Profile']['types'],
   },
 } as const satisfies Record<string, AdonisEndpoint>
 

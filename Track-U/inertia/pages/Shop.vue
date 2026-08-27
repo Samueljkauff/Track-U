@@ -21,7 +21,7 @@
               <div class="container-shadow bg-(--surface) row-span-3 col-span-2"></div>
               <div class="container-shadow bg-(--surface) col-span-3"></div>
           </div>
+      </div>
     </div>
-    </div>
-    </div>
+  </div>
 </template>

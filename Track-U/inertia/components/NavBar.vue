@@ -31,6 +31,7 @@ import { Disc3, LucideIcon } from '@lucide/vue';
 import { Link } from '@inertiajs/vue3';
 import { useAppStore } from '~/stores/appStore';
 import { mapStores } from 'pinia';
+import User from '#models/user';
 
 interface NavItem {
   name: string,
@@ -83,7 +84,8 @@ export default {
       if(this.appStore.isQuickView) {
         return 'Quick View';
       } else {
-        return this.appStore.username;
+      const user = this.$page.props.user as User | undefined
+      return user?.fullName ?? 'Sign In'
       }
     }
   },

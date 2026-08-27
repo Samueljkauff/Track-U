@@ -4,7 +4,7 @@
     <div class="segment col-span-2 h-full flex flex-col gap-3 min-h-0">
         <TopList :list-type="listType"></TopList>
     </div>
-    </div>
+  </div>
 </template>
 
 <script lang="ts">

@@ -3,7 +3,6 @@ import { watch } from 'vue'
 import { usePage } from '@inertiajs/vue3'
 import { toast, Toaster } from 'vue-sonner'
 import type { Data } from '@generated/data'
-import { Link, Form } from '@adonisjs/inertia/vue'
 import NavBar from '~/components/NavBar.vue'
 
 const page = usePage<Data.SharedProps>()
@@ -36,5 +35,5 @@ watch(
     <slot />
   </main>
 
-  <Toaster position="top-center" rich-colors />
+  <Toaster position="top-center" theme="dark" />
 </template>
