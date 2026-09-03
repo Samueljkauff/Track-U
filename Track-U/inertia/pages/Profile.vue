@@ -1,15 +1,25 @@
 <template>
   <Head title="TopArtists" />
   <div class="grid grid-cols-2 grid-rows-2 gap-4 w-auto h-full m-1 text-[#f8f9fa]">
-    <div class="segment col-span-1 row-span-2 h-full w-full gap-3 min-h-0 p-3">
-      <div class="flex flex-col w-full h-full container-shadow bg-(--surface) items-center">
-        <p class="text-6xl mt-6 font-bold">Account Information</p>
-        <hr class="w-[90%] text-gray-400!">
-        <img class="size-6xl mt-6" src="" alt="pfp">
-        <p class="text-3xl">{{ accountLabel }}</p>
-        <p>Email</p>
-        <p>Created at</p>
-      </div>
+      <div class="segment col-span-1 row-span-2 h-full w-full min-h-0 p-3 flex flex-col gap-3">
+  <div class="flex flex-col shrink-0 h-3/4 container-shadow bg-(--surface) items-center">
+    <p class="text-6xl mt-6 font-bold">Account Information</p>
+    <hr class="w-[90%] text-gray-400!">
+    <img class="size-6xl mt-6" src="" alt="pfp">
+    <p class="text-3xl">{{ accountLabel }}</p>
+    <p>Email</p>
+    <p>Created at</p>
+  </div>
+  <div class="grid grid-cols-2 flex-1 min-h-0 container-shadow bg-(--surface)">
+    <div class="w-full h-full p-3">
+        PFP, username, etc
+    </div>
+    <div class="flex justify-center w-full h-full p-3 items-center">
+        <button class="size-xl">
+            Connect Spotify
+        </button>
+    </div>
+  </div>
     </div>
     <div class="segment col-span-1 row-span-1 h-full w-full gap-3 min-h-0 p-3">
       <div class="flex flex-col w-full h-full container-shadow bg-(--surface) items-center">
