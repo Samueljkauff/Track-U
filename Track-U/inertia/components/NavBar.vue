@@ -29,8 +29,6 @@
 <script lang="ts">
 import { Disc3, LucideIcon } from '@lucide/vue';
 import { Link } from '@inertiajs/vue3';
-import { useAppStore } from '~/stores/appStore';
-import { mapStores } from 'pinia';
 import User from '#models/user';
 
 interface NavItem {
@@ -78,8 +76,6 @@ export default {
     };
   },
   computed: {
-    ...mapStores(useAppStore),
-
     accountLabel() {
       const user = this.$page.props.user as User | undefined
       return user?.fullName ?? 'Quick View'
