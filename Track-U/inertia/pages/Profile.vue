@@ -15,7 +15,7 @@
         PFP, username, etc
     </div>
     <div class="flex justify-center w-full h-full p-3 items-center">
-        <button class="size-xl">
+        <button class="size-xl disabled:opacity-50 disabled:cursor-not-allowed" :disabled="!!$page.props.isQuickView">
             Connect Spotify
         </button>
     </div>
@@ -43,7 +43,7 @@
                 <p class="text-gray-300 text-sm text-center px-6">
                     Permanently delete your account and associated data. This action cannot be undone.
                 </p>
-                <button class="bg-red-500! mt-4">Delete Account</button>
+                <button class="bg-red-500! mt-4 disabled:opacity-50 disabled:cursor-not-allowed" :disabled="!!$page.props.isQuickView">Delete Account</button>
             </div>
         </div>
     </div>
