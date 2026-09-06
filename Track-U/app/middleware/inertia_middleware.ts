@@ -31,6 +31,10 @@ export default class InertiaMiddleware extends BaseInertiaMiddleware {
             }
           : undefined
       ),
+      
+      isQuickView: ctx.inertia.always(
+        session?.get('isQuickView') === true
+      ),
 
     }
 

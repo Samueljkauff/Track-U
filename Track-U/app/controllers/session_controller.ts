@@ -11,8 +11,9 @@ export default class SessionController {
     await auth.use('web').login(user)
     return response.redirect().toRoute('home')
   }
-  async destroy({ auth, response }: HttpContext) {
+  async destroy({ auth, session, response }: HttpContext) {
     await auth.use('web').logout()
+    session.forget('isQuickView')
     return response.redirect().toRoute('login')
 
   }

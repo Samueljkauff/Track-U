@@ -6,6 +6,12 @@ import type { ApiDefinition } from './tree.d.ts'
 const placeholder: any = {}
 
 const routes = {
+  'quick_view.store': {
+    methods: ["POST"],
+    pattern: '/quick-view',
+    tokens: [{"old":"/quick-view","type":0,"val":"quick-view","end":""}],
+    types: placeholder as Registry['quick_view.store']['types'],
+  },
   'new_account.store': {
     methods: ["POST"],
     pattern: '/signup',

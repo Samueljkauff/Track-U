@@ -66,7 +66,7 @@ import { router } from '@inertiajs/vue3'
             ...mapStores(useAppStore),
 
             accountLabel() {
-                if(this.appStore.isQuickView) {
+                if(this.$page.props.isQuickView) {
                     return 'Quick View';
                 } else {
                 const user = this.$page.props.user as User | undefined

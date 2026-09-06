@@ -2,6 +2,9 @@
 import type { routes } from './index.ts'
 
 export interface ApiDefinition {
+  quickView: {
+    store: typeof routes['quick_view.store']
+  }
   newAccount: {
     store: typeof routes['new_account.store']
   }

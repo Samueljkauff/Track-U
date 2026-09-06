@@ -11,6 +11,8 @@ import { middleware } from '#start/kernel'
 import { controllers } from '#generated/controllers'
 import router from '@adonisjs/core/services/router'
 
+router.post('/quick-view', [controllers.QuickView, 'store'])
+
 router
   .group(() => {
     // router.get('signup', [controllers.NewAccount, 'create'])
@@ -31,4 +33,4 @@ router
     router.on('/shop').renderInertia('Shop', {}).as('Shop')
     router.on('/profile').renderInertia('Profile', {}).as('Profile')
   })
-  .use(middleware.auth())
+  .use(middleware.authOrQuickView())

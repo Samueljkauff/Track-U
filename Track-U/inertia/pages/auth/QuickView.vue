@@ -21,8 +21,7 @@ export default {
     },
     methods: {
         onClick() {
-            this.appStore.enableQuickView();
-            router.visit('/');
+            router.post('quick-view');
         }
     }
 }

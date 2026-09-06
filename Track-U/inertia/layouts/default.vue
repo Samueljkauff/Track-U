@@ -5,14 +5,11 @@ import { usePage } from '@inertiajs/vue3'
 import { toast, Toaster } from 'vue-sonner'
 import type { Data } from '@generated/data'
 import NavBar from '~/components/NavBar.vue'
-import { useAppStore } from '~/stores/appStore'
 
 const page = usePage<Data.SharedProps>()
 
-const appStore = useAppStore()
-
 const showNavBar = computed(() => {
-  return appStore.isQuickView || !!page.props.user
+  return page.props.isQuickView || !!page.props.user
 })
 
 watch(

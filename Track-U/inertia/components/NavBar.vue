@@ -32,6 +32,8 @@ import { Link } from '@inertiajs/vue3';
 import { useAppStore } from '~/stores/appStore';
 import { mapStores } from 'pinia';
 import User from '#models/user';
+import { Data } from '@generated/data';
+import { usePage } from '@inertiajs/vue3';
 
 interface NavItem {
   name: string,
@@ -72,21 +74,20 @@ export default {
           {
               name: '',
               icon: '',
-              route: '/login',
+              route: '/profile',
           },
       ] as NavItem[],
     };
+  },
+  mounted() {
+    const page = usePage<Data.SharedProps>();
   },
   computed: {
     ...mapStores(useAppStore),
 
     accountLabel() {
-      if(this.appStore.isQuickView) {
-        return 'Quick View';
-      } else {
       const user = this.$page.props.user as User | undefined
-      return user?.fullName ?? 'Sign In'
-      }
+      return user?.fullName ?? 'Quick View'
     }
   },
   components: {
