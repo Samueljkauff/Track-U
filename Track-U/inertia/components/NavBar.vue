@@ -32,8 +32,6 @@ import { Link } from '@inertiajs/vue3';
 import { useAppStore } from '~/stores/appStore';
 import { mapStores } from 'pinia';
 import User from '#models/user';
-import { Data } from '@generated/data';
-import { usePage } from '@inertiajs/vue3';
 
 interface NavItem {
   name: string,
@@ -78,9 +76,6 @@ export default {
           },
       ] as NavItem[],
     };
-  },
-  mounted() {
-    const page = usePage<Data.SharedProps>();
   },
   computed: {
     ...mapStores(useAppStore),
