@@ -5,6 +5,9 @@ export interface ApiDefinition {
   quickView: {
     store: typeof routes['quick_view.store']
   }
+  spotify: {
+    connect: typeof routes['spotify.connect']
+  }
   newAccount: {
     store: typeof routes['new_account.store']
   }

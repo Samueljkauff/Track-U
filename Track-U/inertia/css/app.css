@@ -182,9 +182,11 @@ button {
   padding: 10px;
   font-weight: 500;
 }
+
 button:not(:disabled):hover {
   background: #212529;
   color: white;
+  cursor: pointer;
 }
 
 nav {

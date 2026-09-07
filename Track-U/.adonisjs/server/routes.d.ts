@@ -5,6 +5,7 @@ type ParamValue = string | number | bigint | boolean
 export type ScannedRoutes = {
   ALL: {
     'quick_view.store': { paramsTuple?: []; params?: {} }
+    'spotify.connect': { paramsTuple?: []; params?: {} }
     'new_account.store': { paramsTuple?: []; params?: {} }
     'login': { paramsTuple?: []; params?: {} }
     'session.store': { paramsTuple?: []; params?: {} }
@@ -22,6 +23,7 @@ export type ScannedRoutes = {
     'session.destroy': { paramsTuple?: []; params?: {} }
   }
   GET: {
+    'spotify.connect': { paramsTuple?: []; params?: {} }
     'login': { paramsTuple?: []; params?: {} }
     'home': { paramsTuple?: []; params?: {} }
     'TopSongs': { paramsTuple?: []; params?: {} }
@@ -30,6 +32,7 @@ export type ScannedRoutes = {
     'Profile': { paramsTuple?: []; params?: {} }
   }
   HEAD: {
+    'spotify.connect': { paramsTuple?: []; params?: {} }
     'login': { paramsTuple?: []; params?: {} }
     'home': { paramsTuple?: []; params?: {} }
     'TopSongs': { paramsTuple?: []; params?: {} }

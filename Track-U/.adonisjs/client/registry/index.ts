@@ -12,6 +12,12 @@ const routes = {
     tokens: [{"old":"/quick-view","type":0,"val":"quick-view","end":""}],
     types: placeholder as Registry['quick_view.store']['types'],
   },
+  'spotify.connect': {
+    methods: ["GET","HEAD"],
+    pattern: '/spotify/connect',
+    tokens: [{"old":"/spotify/connect","type":0,"val":"spotify","end":""},{"old":"/spotify/connect","type":0,"val":"connect","end":""}],
+    types: placeholder as Registry['spotify.connect']['types'],
+  },
   'new_account.store': {
     methods: ["POST"],
     pattern: '/signup',

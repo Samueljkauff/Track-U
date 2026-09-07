@@ -19,6 +19,18 @@ export interface Registry {
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/quick_view_controller').default['store']>>>
     }
   }
+  'spotify.connect': {
+    methods: ["GET","HEAD"]
+    pattern: '/spotify/connect'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/spotify_controller').default['connect']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/spotify_controller').default['connect']>>>
+    }
+  }
   'new_account.store': {
     methods: ["POST"]
     pattern: '/signup'

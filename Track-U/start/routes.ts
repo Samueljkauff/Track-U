@@ -12,6 +12,7 @@ import { controllers } from '#generated/controllers'
 import router from '@adonisjs/core/services/router'
 
 router.post('/quick-view', [controllers.QuickView, 'store'])
+router.get('/spotify/connect', [controllers.Spotify, 'connect'])
 
 router
   .group(() => {

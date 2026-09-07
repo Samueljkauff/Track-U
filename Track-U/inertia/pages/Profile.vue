@@ -15,7 +15,7 @@
         PFP, username, etc
     </div>
     <div class="flex justify-center w-full h-full p-3 items-center">
-        <button class="size-xl disabled:opacity-50 disabled:cursor-not-allowed" :disabled="!!$page.props.isQuickView">
+        <button class="size-xl disabled:opacity-50 disabled:cursor-not-allowed bg-[#1BD760]!" :disabled="!!$page.props.isQuickView" @click="connectSpotify">
             Connect Spotify
         </button>
     </div>
@@ -72,6 +72,9 @@ type PageUser = {
         methods: {
             signOut() {
             router.post('/logout');
+            },
+            connectSpotify() {
+                window.location.href = '/spotify/connect'
             }
         },
         computed: {
