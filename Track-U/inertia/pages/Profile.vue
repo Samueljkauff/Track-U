@@ -7,8 +7,8 @@
     <hr class="w-[90%] text-gray-400!">
     <img class="size-6xl mt-6" src="" alt="pfp">
     <p class="text-3xl">{{ accountLabel }}</p>
-    <p>Email</p>
-    <p>Created at</p>
+    <p>{{ user?.email }}</p>
+    <p>Joined: {{ createdAt }}</p>
   </div>
   <div class="grid grid-cols-2 flex-1 min-h-0 container-shadow bg-(--surface)">
     <div class="w-full h-full p-3">
@@ -53,10 +53,22 @@
 <script lang="ts">
 import { useAppStore } from '~/stores/appStore';
 import { mapStores } from 'pinia';
-import User from '#models/user';
 import { router } from '@inertiajs/vue3'
 
+type PageUser = {
+    id: number
+    fullName: string | null
+    email: string
+    createdAt: string
+    initials: string
+}
+
     export default {
+        data() {
+            return { 
+                user: this.$page.props.user as PageUser 
+            }
+        },
         methods: {
             signOut() {
             router.post('/logout');
@@ -69,9 +81,20 @@ import { router } from '@inertiajs/vue3'
                 if(this.$page.props.isQuickView) {
                     return 'Quick View';
                 } else {
-                const user = this.$page.props.user as User | undefined
-                return user?.fullName ?? 'Sign In'
+                return this.user?.fullName ?? 'Sign In'
                 }
+            },
+
+            createdAt() {
+                if (!this.user?.createdAt) {
+                    return ''
+                }
+
+                return new Date(this.user?.createdAt).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                })
             }
         }
     }

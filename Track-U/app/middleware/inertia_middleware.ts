@@ -27,11 +27,12 @@ export default class InertiaMiddleware extends BaseInertiaMiddleware {
               id: auth.user.id,
               fullName: auth.user.fullName,
               email: auth.user.email,
+              createdAt: auth.user.createdAt.toISO(),
               initials: auth.user.initials,
             }
           : undefined
       ),
-      
+
       isQuickView: ctx.inertia.always(
         session?.get('isQuickView') === true
       ),
