@@ -7,6 +7,38 @@
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
 
+export class ItemSchema extends BaseModel {
+  static $columns = ['createdAt', 'id', 'updatedAt'] as const
+  $columns = ItemSchema.$columns
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
+export class SpotifyAccountSchema extends BaseModel {
+  static $columns = ['accessToken', 'createdAt', 'expiresAt', 'id', 'refreshToken', 'spotifyId', 'updatedAt', 'userId'] as const
+  $columns = SpotifyAccountSchema.$columns
+  @column()
+  declare accessToken: string
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime | null
+  @column.dateTime()
+  declare expiresAt: DateTime
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare refreshToken: string
+  @column()
+  declare spotifyId: string
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+  @column()
+  declare userId: number
+}
+
 export class UserSchema extends BaseModel {
   static $columns = ['createdAt', 'email', 'fullName', 'id', 'password', 'updatedAt'] as const
   $columns = UserSchema.$columns

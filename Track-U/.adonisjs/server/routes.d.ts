@@ -4,41 +4,44 @@ type ParamValue = string | number | bigint | boolean
 
 export type ScannedRoutes = {
   ALL: {
-    'quick_view.store': { paramsTuple?: []; params?: {} }
-    'spotify.connect': { paramsTuple?: []; params?: {} }
     'new_account.store': { paramsTuple?: []; params?: {} }
     'login': { paramsTuple?: []; params?: {} }
     'session.store': { paramsTuple?: []; params?: {} }
+    'quick_view.store': { paramsTuple?: []; params?: {} }
     'session.destroy': { paramsTuple?: []; params?: {} }
     'home': { paramsTuple?: []; params?: {} }
     'TopSongs': { paramsTuple?: []; params?: {} }
     'TopArtists': { paramsTuple?: []; params?: {} }
     'Shop': { paramsTuple?: []; params?: {} }
     'Profile': { paramsTuple?: []; params?: {} }
+    'spotify.connect': { paramsTuple?: []; params?: {} }
+    'spotify.callback': { paramsTuple?: []; params?: {} }
   }
   POST: {
-    'quick_view.store': { paramsTuple?: []; params?: {} }
     'new_account.store': { paramsTuple?: []; params?: {} }
     'session.store': { paramsTuple?: []; params?: {} }
+    'quick_view.store': { paramsTuple?: []; params?: {} }
     'session.destroy': { paramsTuple?: []; params?: {} }
   }
   GET: {
-    'spotify.connect': { paramsTuple?: []; params?: {} }
     'login': { paramsTuple?: []; params?: {} }
     'home': { paramsTuple?: []; params?: {} }
     'TopSongs': { paramsTuple?: []; params?: {} }
     'TopArtists': { paramsTuple?: []; params?: {} }
     'Shop': { paramsTuple?: []; params?: {} }
     'Profile': { paramsTuple?: []; params?: {} }
+    'spotify.connect': { paramsTuple?: []; params?: {} }
+    'spotify.callback': { paramsTuple?: []; params?: {} }
   }
   HEAD: {
-    'spotify.connect': { paramsTuple?: []; params?: {} }
     'login': { paramsTuple?: []; params?: {} }
     'home': { paramsTuple?: []; params?: {} }
     'TopSongs': { paramsTuple?: []; params?: {} }
     'TopArtists': { paramsTuple?: []; params?: {} }
     'Shop': { paramsTuple?: []; params?: {} }
     'Profile': { paramsTuple?: []; params?: {} }
+    'spotify.connect': { paramsTuple?: []; params?: {} }
+    'spotify.callback': { paramsTuple?: []; params?: {} }
   }
 }
 declare module '@adonisjs/core/types/http' {

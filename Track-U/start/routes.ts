@@ -11,9 +11,6 @@ import { middleware } from '#start/kernel'
 import { controllers } from '#generated/controllers'
 import router from '@adonisjs/core/services/router'
 
-router.post('/quick-view', [controllers.QuickView, 'store'])
-router.get('/spotify/connect', [controllers.Spotify, 'connect'])
-
 router
   .group(() => {
     // router.get('signup', [controllers.NewAccount, 'create'])
@@ -22,6 +19,7 @@ router
     // router.get('login', [controllers.Session, 'create'])
     router.on('/login').renderInertia('auth/AuthPage', {}).as('login')
     router.post('login', [controllers.Session, 'store'])
+    router.post('/quick-view', [controllers.QuickView, 'store'])
   })
   .use(middleware.guest())
 
@@ -35,3 +33,10 @@ router
     router.on('/profile').renderInertia('Profile', {}).as('Profile')
   })
   .use(middleware.authOrQuickView())
+
+  router
+  .group(() => {
+    router.get('/spotify/connect', [controllers.Spotify, 'connect'])
+    router.get('/spotify/callback', [controllers.Spotify, 'callback'])
+  })
+  .use(middleware.auth())

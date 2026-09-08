@@ -1,5 +1,5 @@
 <template>
-  <Head title="TopArtists" />
+  <Head title="Profile" />
   <div class="grid grid-cols-2 grid-rows-2 gap-4 w-auto h-full m-1 text-[#f8f9fa]">
       <div class="segment col-span-1 row-span-2 h-full w-full min-h-0 p-3 flex flex-col gap-3">
   <div class="flex flex-col shrink-0 h-3/4 container-shadow bg-(--surface) items-center">

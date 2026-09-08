@@ -7,30 +7,6 @@ import type { InferInput, SimpleError } from '@vinejs/vine/types'
 export type ParamValue = string | number | bigint | boolean
 
 export interface Registry {
-  'quick_view.store': {
-    methods: ["POST"]
-    pattern: '/quick-view'
-    types: {
-      body: {}
-      paramsTuple: []
-      params: {}
-      query: {}
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/quick_view_controller').default['store']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/quick_view_controller').default['store']>>>
-    }
-  }
-  'spotify.connect': {
-    methods: ["GET","HEAD"]
-    pattern: '/spotify/connect'
-    types: {
-      body: {}
-      paramsTuple: []
-      params: {}
-      query: {}
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/spotify_controller').default['connect']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/spotify_controller').default['connect']>>>
-    }
-  }
   'new_account.store': {
     methods: ["POST"]
     pattern: '/signup'
@@ -65,6 +41,18 @@ export interface Registry {
       query: {}
       response: ExtractResponse<Awaited<ReturnType<import('#controllers/session_controller').default['store']>>>
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/session_controller').default['store']>>>
+    }
+  }
+  'quick_view.store': {
+    methods: ["POST"]
+    pattern: '/quick-view'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/quick_view_controller').default['store']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/quick_view_controller').default['store']>>>
     }
   }
   'session.destroy': {
@@ -137,6 +125,30 @@ export interface Registry {
       query: {}
       response: unknown
       errorResponse: unknown
+    }
+  }
+  'spotify.connect': {
+    methods: ["GET","HEAD"]
+    pattern: '/spotify/connect'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/spotify_controller').default['connect']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/spotify_controller').default['connect']>>>
+    }
+  }
+  'spotify.callback': {
+    methods: ["GET","HEAD"]
+    pattern: '/spotify/callback'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/spotify_controller').default['callback']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/spotify_controller').default['callback']>>>
     }
   }
 }

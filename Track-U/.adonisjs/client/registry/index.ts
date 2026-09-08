@@ -6,18 +6,6 @@ import type { ApiDefinition } from './tree.d.ts'
 const placeholder: any = {}
 
 const routes = {
-  'quick_view.store': {
-    methods: ["POST"],
-    pattern: '/quick-view',
-    tokens: [{"old":"/quick-view","type":0,"val":"quick-view","end":""}],
-    types: placeholder as Registry['quick_view.store']['types'],
-  },
-  'spotify.connect': {
-    methods: ["GET","HEAD"],
-    pattern: '/spotify/connect',
-    tokens: [{"old":"/spotify/connect","type":0,"val":"spotify","end":""},{"old":"/spotify/connect","type":0,"val":"connect","end":""}],
-    types: placeholder as Registry['spotify.connect']['types'],
-  },
   'new_account.store': {
     methods: ["POST"],
     pattern: '/signup',
@@ -35,6 +23,12 @@ const routes = {
     pattern: '/login',
     tokens: [{"old":"/login","type":0,"val":"login","end":""}],
     types: placeholder as Registry['session.store']['types'],
+  },
+  'quick_view.store': {
+    methods: ["POST"],
+    pattern: '/quick-view',
+    tokens: [{"old":"/quick-view","type":0,"val":"quick-view","end":""}],
+    types: placeholder as Registry['quick_view.store']['types'],
   },
   'session.destroy': {
     methods: ["POST"],
@@ -71,6 +65,18 @@ const routes = {
     pattern: '/profile',
     tokens: [{"old":"/profile","type":0,"val":"profile","end":""}],
     types: placeholder as Registry['Profile']['types'],
+  },
+  'spotify.connect': {
+    methods: ["GET","HEAD"],
+    pattern: '/spotify/connect',
+    tokens: [{"old":"/spotify/connect","type":0,"val":"spotify","end":""},{"old":"/spotify/connect","type":0,"val":"connect","end":""}],
+    types: placeholder as Registry['spotify.connect']['types'],
+  },
+  'spotify.callback': {
+    methods: ["GET","HEAD"],
+    pattern: '/spotify/callback',
+    tokens: [{"old":"/spotify/callback","type":0,"val":"spotify","end":""},{"old":"/spotify/callback","type":0,"val":"callback","end":""}],
+    types: placeholder as Registry['spotify.callback']['types'],
   },
 } as const satisfies Record<string, AdonisEndpoint>
 
