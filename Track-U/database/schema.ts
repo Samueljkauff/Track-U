@@ -19,7 +19,7 @@ export class ItemSchema extends BaseModel {
 }
 
 export class SpotifyAccountSchema extends BaseModel {
-  static $columns = ['accessToken', 'createdAt', 'expiresAt', 'id', 'refreshToken', 'spotifyId', 'updatedAt', 'userId'] as const
+  static $columns = ['accessToken', 'createdAt', 'expiresAt', 'id', 'refreshToken', 'spotifyId', 'updatedAt', 'userId', 'userLink', 'userName', 'userPfp'] as const
   $columns = SpotifyAccountSchema.$columns
   @column()
   declare accessToken: string
@@ -37,6 +37,12 @@ export class SpotifyAccountSchema extends BaseModel {
   declare updatedAt: DateTime | null
   @column()
   declare userId: number
+  @column()
+  declare userLink: string
+  @column()
+  declare userName: string
+  @column()
+  declare userPfp: string | null
 }
 
 export class UserSchema extends BaseModel {

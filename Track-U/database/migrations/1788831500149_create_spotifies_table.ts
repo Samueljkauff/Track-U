@@ -17,11 +17,11 @@ export default class extends BaseSchema {
         .unique()
 
       table.string('spotify_id').notNullable().unique()
-
+      table.string('user_name').notNullable()
+      table.string('user_link').notNullable()
+      table.string('user_pfp').nullable()
       table.string('access_token').notNullable()
-
       table.string('refresh_token').notNullable()
-
       table.timestamp('expires_at').notNullable()
 
       table.timestamp('created_at')

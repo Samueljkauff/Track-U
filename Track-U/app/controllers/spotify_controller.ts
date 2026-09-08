@@ -1,6 +1,7 @@
 import type { HttpContext } from '@adonisjs/core/http';
 import env from '#start/env';
 import { randomBytes } from 'node:crypto'
+import SpotifyService from '#services/spotify_service';
 
 export default class SpotifyController {
     async connect({ response, session }: HttpContext) {
@@ -21,7 +22,7 @@ export default class SpotifyController {
         )
     }
 
-    async callback({ request, response, session }: HttpContext) {
+    async callback({ request, response, session, auth }: HttpContext) {
         const code = request.input('code');
         const returnedState = request.input('state');
         const savedState = session.get('spotifyState');
@@ -30,29 +31,11 @@ export default class SpotifyController {
             return response.badRequest('Invalid Spotify authorization request')
         }
 
-          session.forget('spotifyState')
+        session.forget('spotifyState')
 
-        const tokenResponse = await fetch(
-            'https://accounts.spotify.com/api/token',
-            {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                Authorization:
-                'Basic ' +
-                Buffer.from(
-                    `${env.get('SPOTIFY_CLIENT_ID')}:${env.get('SPOTIFY_CLIENT_SECRET')}`
-                ).toString('base64'),
-            },
-            body: new URLSearchParams({
-                grant_type: 'authorization_code',
-                code,
-                redirect_uri: env.get('SPOTIFY_REDIRECT_URI')!,
-            }),
-            }
-        )
+        const spotifyService = new SpotifyService();
 
-        const tokens = await tokenResponse.json()
+        await spotifyService.connectAccount(code, auth.user!.id)
 
         return response.redirect('/profile')
     }
