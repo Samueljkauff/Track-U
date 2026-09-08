@@ -14,14 +14,14 @@
     <div class="grid grid-cols-2 w-full h-full p-3">
         <div>
             <img
-            :src="$page.props.spotifyAccount?.userPfp"
-            :alt="$page.props.spotifyAccount?.username"
+            :src="spotifyProfile.userPfp"
+            :alt="spotifyProfile.userName"
         >
         </div>
         <div>
-            <p>{{ $page.props.spotifyAccount?.userName }}</p>
+            <p>{{ spotifyProfile.userName }}</p>
         <a
-            :href="$page.props.spotifyAccount?.userLink"
+            :href="spotifyProfile.userLink"
             target="_blank"
             rel="noopener noreferrer">
             View Spotify Profile
@@ -30,7 +30,7 @@
     </div>
     <div class="flex justify-center w-full h-full p-3 items-center">
         <button class="size-xl disabled:opacity-50 disabled:cursor-not-allowed bg-[#1BD760]!" :disabled="!!$page.props.isQuickView" @click="connectSpotify">
-        {{ $page.props.spotifyAccount
+        {{ spotifyProfile
             ? 'Disconnect Spotify'
             : 'Connect Spotify' }}
         </button>
@@ -79,10 +79,17 @@ type PageUser = {
     initials: string
 }
 
+type spotifyProfile = {
+    userName: string,
+    userPfp: string | undefined,
+    userLink: string,
+}
+
     export default {
         data() {
             return { 
-                user: this.$page.props.user as PageUser 
+                user: this.$page.props.user as PageUser,
+                spotifyProfile: this.$page.props.spotifyAccount as spotifyProfile
             }
         },
         methods: {
@@ -90,7 +97,7 @@ type PageUser = {
             router.post('/logout');
             },
             connectSpotify() {
-                if(!this.$page.props.spotifyAccount) {
+                if(!this.spotifyProfile) {
                     window.location.href = '/spotify/connect'
                 } else {
                     router.delete('/spotify/disconnect')
