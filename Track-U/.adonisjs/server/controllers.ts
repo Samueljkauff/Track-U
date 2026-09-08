@@ -5,6 +5,7 @@
 
 export const controllers = {
   NewAccount: () => import('#controllers/new_account_controller'),
+  Profile: () => import('#controllers/profile_controller'),
   QuickView: () => import('#controllers/quick_view_controller'),
   Session: () => import('#controllers/session_controller'),
   Spotify: () => import('#controllers/spotify_controller'),

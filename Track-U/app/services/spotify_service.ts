@@ -43,8 +43,7 @@ export default class SpotifyService {
           code,
           redirect_uri: env.get('SPOTIFY_REDIRECT_URI')!,
         }),
-      }
-    )
+      })
 
     const tokens = await tokenResponse.json() as Token
 
@@ -54,22 +53,34 @@ export default class SpotifyService {
         headers: {
           Authorization: `Bearer ${tokens.access_token}`,
         },
-      }
-    )
+      })
 
     const spotifyUser = await userResponse.json() as SpotifyUser
 
     await SpotifyAccount.create({
       userId,
-      spotifyId: spotifyUser.id,
-      userName: spotifyUser.display_name ?? 'Spotify User',
-      userLink: spotifyUser.external_urls.spotify,
-      userPfp: spotifyUser.images[0]?.url ?? null,
-      accessToken: tokens.access_token,
-      refreshToken: tokens.refresh_token,
-      expiresAt: DateTime.now().plus({
+        spotifyId: spotifyUser.id,
+        userName: spotifyUser.display_name ?? 'Spotify User',
+        userLink: spotifyUser.external_urls.spotify,
+        userPfp: spotifyUser.images[0]?.url ?? null,
+        accessToken: tokens.access_token,
+        refreshToken: tokens.refresh_token,
+        expiresAt: DateTime.now().plus({
         seconds: tokens.expires_in,
       }),
     })
   }
+
+    async disconnectAccount(userId: number) {
+        const spotifyAccount = await SpotifyAccount
+            .query()
+            .where('userId', userId)
+            .first()
+
+        if (!spotifyAccount) {
+            return
+        }
+
+        await spotifyAccount.delete()
+    }
 }

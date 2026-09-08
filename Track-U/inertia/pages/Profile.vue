@@ -11,12 +11,28 @@
     <p>Joined: {{ createdAt }}</p>
   </div>
   <div class="grid grid-cols-2 flex-1 min-h-0 container-shadow bg-(--surface)">
-    <div class="w-full h-full p-3">
-        PFP, username, etc
+    <div class="grid grid-cols-2 w-full h-full p-3">
+        <div>
+            <img
+            :src="$page.props.spotifyAccount?.userPfp"
+            :alt="$page.props.spotifyAccount?.username"
+        >
+        </div>
+        <div>
+            <p>{{ $page.props.spotifyAccount?.userName }}</p>
+        <a
+            :href="$page.props.spotifyAccount?.userLink"
+            target="_blank"
+            rel="noopener noreferrer">
+            View Spotify Profile
+        </a>
+        </div>
     </div>
     <div class="flex justify-center w-full h-full p-3 items-center">
         <button class="size-xl disabled:opacity-50 disabled:cursor-not-allowed bg-[#1BD760]!" :disabled="!!$page.props.isQuickView" @click="connectSpotify">
-            Connect Spotify
+        {{ $page.props.spotifyAccount
+            ? 'Disconnect Spotify'
+            : 'Connect Spotify' }}
         </button>
     </div>
   </div>
@@ -74,7 +90,11 @@ type PageUser = {
             router.post('/logout');
             },
             connectSpotify() {
-                window.location.href = '/spotify/connect'
+                if(!this.$page.props.spotifyAccount) {
+                    window.location.href = '/spotify/connect'
+                } else {
+                    router.delete('/spotify/disconnect')
+                }
             }
         },
         computed: {

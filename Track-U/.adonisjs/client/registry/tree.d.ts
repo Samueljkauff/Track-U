@@ -21,5 +21,6 @@ export interface ApiDefinition {
   spotify: {
     connect: typeof routes['spotify.connect']
     callback: typeof routes['spotify.callback']
+    disconnect: typeof routes['spotify.disconnect']
   }
 }

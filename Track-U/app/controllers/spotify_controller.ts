@@ -1,4 +1,4 @@
-import type { HttpContext } from '@adonisjs/core/http';
+import { Redirect, type HttpContext } from '@adonisjs/core/http';
 import env from '#start/env';
 import { randomBytes } from 'node:crypto'
 import SpotifyService from '#services/spotify_service';
@@ -20,6 +20,15 @@ export default class SpotifyController {
         return response.redirect(
             `https://accounts.spotify.com/authorize?${params.toString()}`
         )
+    }
+
+    async disconnect({ response, auth}: HttpContext) {
+
+        const spotifyService = new SpotifyService();
+
+        await spotifyService.disconnectAccount(auth.user!.id);
+
+        return response.redirect('/profile');
     }
 
     async callback({ request, response, session, auth }: HttpContext) {

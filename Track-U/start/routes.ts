@@ -30,7 +30,7 @@ router
     router.on('/top-songs').renderInertia('TopSongs', {}).as('TopSongs')
     router.on('/top-artists').renderInertia('TopArtists', {}).as('TopArtists')
     router.on('/shop').renderInertia('Shop', {}).as('Shop')
-    router.on('/profile').renderInertia('Profile', {}).as('Profile')
+    router.get('/profile', [controllers.Profile, 'show']).as('Profile')
   })
   .use(middleware.authOrQuickView())
 
@@ -38,5 +38,6 @@ router
   .group(() => {
     router.get('/spotify/connect', [controllers.Spotify, 'connect'])
     router.get('/spotify/callback', [controllers.Spotify, 'callback'])
+    router.delete('/spotify/disconnect', [controllers.Spotify, 'disconnect'])
   })
   .use(middleware.auth())

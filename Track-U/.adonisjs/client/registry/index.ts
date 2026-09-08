@@ -78,6 +78,12 @@ const routes = {
     tokens: [{"old":"/spotify/callback","type":0,"val":"spotify","end":""},{"old":"/spotify/callback","type":0,"val":"callback","end":""}],
     types: placeholder as Registry['spotify.callback']['types'],
   },
+  'spotify.disconnect': {
+    methods: ["DELETE"],
+    pattern: '/spotify/disconnect',
+    tokens: [{"old":"/spotify/disconnect","type":0,"val":"spotify","end":""},{"old":"/spotify/disconnect","type":0,"val":"disconnect","end":""}],
+    types: placeholder as Registry['spotify.disconnect']['types'],
+  },
 } as const satisfies Record<string, AdonisEndpoint>
 
 export { routes }
