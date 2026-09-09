@@ -1,4 +1,4 @@
-import { Redirect, type HttpContext } from '@adonisjs/core/http';
+import { type HttpContext } from '@adonisjs/core/http';
 import env from '#start/env';
 import { randomBytes } from 'node:crypto'
 import SpotifyService from '#services/spotify_service';
@@ -8,6 +8,7 @@ export default class SpotifyController {
         const state = randomBytes(32).toString('hex')
 
         session.put('spotifyState', state)
+
 
         const params = new URLSearchParams({
             client_id: env.get('SPOTIFY_CLIENT_ID')!,
@@ -46,6 +47,9 @@ export default class SpotifyController {
 
         await spotifyService.connectAccount(code, auth.user!.id)
 
-        return response.redirect('/profile')
+        return response
+        .redirect()
+        .withQs(false)
+        .toRoute('Profile')
     }
 }

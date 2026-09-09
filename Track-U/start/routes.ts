@@ -13,10 +13,7 @@ import router from '@adonisjs/core/services/router'
 
 router
   .group(() => {
-    // router.get('signup', [controllers.NewAccount, 'create'])
     router.post('signup', [controllers.NewAccount, 'store'])
-
-    // router.get('login', [controllers.Session, 'create'])
     router.on('/login').renderInertia('auth/AuthPage', {}).as('login')
     router.post('login', [controllers.Session, 'store'])
     router.post('/quick-view', [controllers.QuickView, 'store'])

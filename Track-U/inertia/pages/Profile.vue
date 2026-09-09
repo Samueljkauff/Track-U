@@ -11,24 +11,29 @@
     <p>Joined: {{ createdAt }}</p>
   </div>
   <div class="grid grid-cols-2 flex-1 min-h-0 container-shadow bg-(--surface)">
-    <div class="grid grid-cols-2 w-full h-full p-3">
-        <div>
+    <div v-if="spotifyProfile" class="grid grid-cols-2 w-full h-full p-5 gap-2">
+        <div class="flex justify-center items-center">
             <img
             :src="spotifyProfile.userPfp"
             :alt="spotifyProfile.userName"
+            class="rounded-full"
         >
         </div>
-        <div>
-            <p>{{ spotifyProfile.userName }}</p>
+        <div class="flex flex-col justify-center items-center">
+            <p class="text-xl font-bold text-[#f8f9fa]">{{ spotifyProfile.userName }}</p>
         <a
             :href="spotifyProfile.userLink"
             target="_blank"
-            rel="noopener noreferrer">
+            rel="noopener noreferrer"
+            class="text-gray-300">
             View Spotify Profile
         </a>
         </div>
     </div>
-    <div class="flex justify-center w-full h-full p-3 items-center">
+    <div v-else>
+        Connect
+    </div>
+    <div class="flex justify-center w-full h-full items-center">
         <button class="size-xl disabled:opacity-50 disabled:cursor-not-allowed bg-[#1BD760]!" :disabled="!!$page.props.isQuickView" @click="connectSpotify">
         {{ spotifyProfile
             ? 'Disconnect Spotify'
@@ -89,7 +94,6 @@ type spotifyProfile = {
         data() {
             return { 
                 user: this.$page.props.user as PageUser,
-                spotifyProfile: this.$page.props.spotifyAccount as spotifyProfile
             }
         },
         methods: {
@@ -100,13 +104,20 @@ type spotifyProfile = {
                 if(!this.spotifyProfile) {
                     window.location.href = '/spotify/connect'
                 } else {
-                    router.delete('/spotify/disconnect')
+                    router.delete('/spotify/disconnect', {
+                        onSuccess: () => {
+                            router.reload()
+                        },
+                    })
                 }
             }
         },
         computed: {
             ...mapStores(useAppStore),
 
+              spotifyProfile() {
+                    return this.$page.props.spotifyAccount as spotifyProfile | null
+                },
             accountLabel() {
                 if(this.$page.props.isQuickView) {
                     return 'Quick View';
