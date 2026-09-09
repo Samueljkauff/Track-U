@@ -30,11 +30,13 @@
         </a>
         </div>
     </div>
-    <div v-else>
-        Connect
+    <div v-else class="flex flex-col justify-center items-center p-3 gap-2">
+        <p class="text-3xl font-bold text-[#f8f9fa]">Spotify</p>
+        <hr class="w-[95%] text-gray-400!">
+        <p class="text-gray-300">Connect your Spotify account to link your profile and access Spotify-powered features.</p>
     </div>
     <div class="flex justify-center w-full h-full items-center">
-        <button class="size-xl disabled:opacity-50 disabled:cursor-not-allowed bg-[#1BD760]!" :disabled="!!$page.props.isQuickView" @click="connectSpotify">
+        <button class="size-xl disabled:opacity-50 disabled:cursor-not-allowed bg-[#1BD760]! hover:bg-[#2ce670]!" :disabled="!!$page.props.isQuickView" @click="connectSpotify">
         {{ spotifyProfile
             ? 'Disconnect Spotify'
             : 'Connect Spotify' }}
