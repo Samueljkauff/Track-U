@@ -23,7 +23,7 @@ router
 router
   .group(() => {
     router.post('logout', [controllers.Session, 'destroy'])
-    router.on('/').renderInertia('home', {}).as('home')
+    router.get('/', [controllers.Home, 'show']).as('home')
     router.on('/top-songs').renderInertia('TopSongs', {}).as('TopSongs')
     router.on('/top-artists').renderInertia('TopArtists', {}).as('TopArtists')
     router.on('/shop').renderInertia('Shop', {}).as('Shop')

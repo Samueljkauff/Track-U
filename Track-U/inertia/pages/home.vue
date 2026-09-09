@@ -21,6 +21,23 @@ import EntertainmentZone from '~/components/EntertainmentZone.vue';
 
 export default {
   name: 'Home',
+  mounted() {
+    console.log(this.nowListening)
+  },
+    computed: {
+      nowListening() {
+        return this.$page.props.nowListening
+      },
+      topTracks() {
+        return this.$page.props.topTracks
+      },
+      topArtists() {
+        return this.$page.props.topArtists
+      },
+      recentlyPlayed() {
+        return this.$page.props.recentlyPlayed
+      }
+    },
   components: {
     Head,
     NowListening,

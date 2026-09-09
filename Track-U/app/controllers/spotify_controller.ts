@@ -11,11 +11,16 @@ export default class SpotifyController {
 
 
         const params = new URLSearchParams({
-            client_id: env.get('SPOTIFY_CLIENT_ID')!,
-            response_type: 'code',
-            redirect_uri: env.get('SPOTIFY_REDIRECT_URI')!,
-            scope: 'user-top-read',
-            state,
+        client_id: env.get('SPOTIFY_CLIENT_ID')!,
+        response_type: 'code',
+        redirect_uri: env.get('SPOTIFY_REDIRECT_URI')!,
+        scope: [
+        'user-top-read',
+        'user-read-playback-state',
+        'user-read-currently-playing',
+        'user-read-recently-played',
+        ].join(' '),
+        state,
         })
 
         return response.redirect(

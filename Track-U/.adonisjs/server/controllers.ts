@@ -4,6 +4,7 @@
  */
 
 export const controllers = {
+  Home: () => import('#controllers/home_controller'),
   NewAccount: () => import('#controllers/new_account_controller'),
   Profile: () => import('#controllers/profile_controller'),
   QuickView: () => import('#controllers/quick_view_controller'),
