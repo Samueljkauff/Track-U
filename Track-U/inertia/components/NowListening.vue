@@ -2,16 +2,19 @@
     <div class="w-full h-full pt-3 pl-3 min-h-0">
         <div class="w-full h-full flex flex-col items-center justify-center gap-3 bg-(--surface) rounded-xs p-8 text-[#f8f9fa] container-shadow min-h-0">
             <p class="text-5xl font-bold z-10">Now Listening to</p>
-            <img class="max-h-60 active" :src="currentSong.albumCover" alt="album cover">
-            <p class="text-4xl font-semibold">{{ currentSong.songName }}</p>
+            <img class="max-h-60 active" :src="nowListening?.albumCover.toString()" alt="album cover">
+            <p class="text-4xl font-semibold">{{ nowListening?.songName }}</p>
             <p class="text-2xl">
-                By: <span class="font-semibold">{{ currentSong.artistName }}</span>
+                By: <span class="font-semibold">{{ nowListening?.artist }}</span>
             </p>
         </div>
     </div>
 </template>
 
 <script lang="ts">
+import { PropType } from 'vue';
+import { PlayingNow } from '~/types/playingNow';
+
 export default {
     name: "NowListening",
 
@@ -25,6 +28,12 @@ export default {
             },
         };
     },
+    props: {
+        nowListening: {
+            type: Object as PropType<PlayingNow | null>,
+            require: true,
+        }
+    }
 };
 </script>
 
