@@ -4,7 +4,7 @@
             <p class="text-5xl font-bold z-10">Now Listening to</p>
             <img
                 class="max-h-60 active"
-                :src="nowListening ? nowListening.albumCover : '../../images/dummyAlbum.png'"
+                :src="nowListening ? nowListening.albumCover.toString() : '../../images/dummyAlbum.png'"
                 alt="album cover">
             <p class="text-4xl font-semibold">{{ nowListening ? nowListening.songName : 'Nothing currently playing' }}</p>
             <p class="text-2xl">{{ nowListening ? 'By:' : 'Play a song to show it live' }}
