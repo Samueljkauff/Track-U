@@ -3,12 +3,13 @@
         <div class="w-full h-full flex flex-col items-center justify-center gap-3 bg-(--surface) rounded-xs p-8 text-[#f8f9fa] container-shadow min-h-0">
             <p class="text-5xl font-bold z-10">Now Listening to</p>
             <img
-                class="max-h-60 active"
-                :src="nowListening ? nowListening.albumCover.toString() : '../../images/dummyAlbum.png'"
+                class="max-h-60"
+                :class="{ active: nowListening?.isPlaying }"
+                :src="nowListening?.isPlaying ? nowListening.albumCover.toString() : '../../images/dummyAlbum.png'"
                 alt="album cover">
-            <p class="text-4xl font-semibold">{{ nowListening ? nowListening.songName : 'Nothing currently playing' }}</p>
-            <p class="text-2xl">{{ nowListening ? 'By:' : 'Play a song to show it live' }}
-                <span v-if="nowListening" class="font-semibold">
+            <p class="text-4xl font-semibold">{{ nowListening?.isPlaying ? nowListening.songName : 'Nothing currently playing' }}</p>
+            <p class="text-2xl">{{ nowListening?.isPlaying ? 'By:' : 'Play a song to show it live' }}
+                <span v-if="nowListening?.isPlaying" class="font-semibold">
                     {{ nowListening.artist }}
                 </span>
             </p>

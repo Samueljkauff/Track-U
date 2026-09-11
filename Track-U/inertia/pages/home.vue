@@ -20,6 +20,8 @@ import Topsters from '~/components/Topsters.vue';
 import EntertainmentZone from '~/components/EntertainmentZone.vue';
 import { PlayingNow } from '~/types/playingNow';
 
+
+
 export default {
   name: 'Home',
   mounted() {
@@ -35,6 +37,7 @@ export default {
             album: spotify.item.album.name,
             artist: spotify.item.artists[0].name,
             albumCover: spotify.item.album.images[0].url,
+            isPlaying: spotify.is_playing,
           } as PlayingNow;
           return currentPlay
         }

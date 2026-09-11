@@ -3,4 +3,5 @@ export interface PlayingNow {
     album: string,
     artist: string[],
     albumCover: string[],
+    isPlaying: Boolean,
 }
