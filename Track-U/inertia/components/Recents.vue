@@ -1,16 +1,12 @@
 <template>
 <div class="flex flex-col h-full min-h-0 p-3 gap-3">
-
   <div
     class="bg-(--surface) flex flex-col rounded-xs text-[#f8f9fa] container-shadow h-full min-h-0"
   >
-
-    <p class="m-3 font-semibold text-xl shrink-0">
+    <p class="m-3 font-semibold text-xl shrink-0 text-center">
       Listening History
     </p>
-
-    <hr class="w-[90%] shrink-0">
-
+    <hr class="shrink-0">
     <div class="flex-1 min-h-0 overflow-y-auto">
 
       <div
@@ -40,7 +36,7 @@
         </p>
 
         <p class="text-sm opacity-70 text-right">
-          {{ song.playedAt }}
+          {{ formatPlayedAt(song.playedAt) }}
         </p>
 
       </div>
@@ -64,6 +60,39 @@ interface RecentlyPlayed {
 }
 
 export default {
+  methods: {
+    formatPlayedAt(date: string) {
+      const played = new Date(date)
+      const now = new Date()
+
+      const isToday =
+        played.toDateString() === now.toDateString()
+
+      const yesterday = new Date()
+      yesterday.setDate(now.getDate() - 1)
+
+      const isYesterday =
+        played.toDateString() === yesterday.toDateString()
+
+      const time = played.toLocaleTimeString([], {
+        hour: 'numeric',
+        minute: '2-digit',
+      })
+
+      if (isToday) {
+        return `Today, ${time}`
+      }
+
+      if (isYesterday) {
+        return `Yesterday, ${time}`
+      }
+
+      return played.toLocaleDateString([], {
+        month: 'short',
+        day: 'numeric',
+      }) + `, ${time}`
+    }
+  },
   props: {
     recentlyPlayed: {
       type: Array as PropType<RecentlyPlayed[]>,
