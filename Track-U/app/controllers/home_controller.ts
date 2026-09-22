@@ -10,7 +10,6 @@ export default class HomeController {
     const nowListening =
       await spotifyService.getCurrentlyPlaying(auth.user!.id)
 
-      console.log('NOW LISTENING:', nowListening)
     const topTracks =
       await spotifyService.getTopTracks(auth.user!.id)
 
@@ -19,6 +18,7 @@ export default class HomeController {
 
     const recentlyPlayed =
       await spotifyService.getRecentlyPlayed(auth.user!.id)
+        console.log(recentlyPlayed.items)
 
     return inertia.render('home', {
       nowListening,

@@ -1,15 +1,35 @@
 <template>
+
   <Head title="Homepage" />
-  <div class="grid grid-cols-3 gap-4 w-auto h-full m-1">
-    <div class="segment col-span-2 h-full grid grid-cols-3 gap-3 min-h-0">
-      <NowListening :now-listening="nowListening" class="min-h-0 col-span-2" />
-      <EntertainmentZone></EntertainmentZone>
-      <Topsters class="w-auto grid grid-cols-2 gap-3 flex-1 min-h-0" />
+
+  <div class="grid grid-cols-3 gap-4 w-auto h-full min-h-0 m-1">
+
+    <div class="segment col-span-2 h-full min-h-0 grid grid-cols-3 gap-3">
+
+      <NowListening
+        :now-listening="nowListening"
+        class="min-h-0 col-span-2"
+      />
+
+      <EntertainmentZone />
+
+      <Topsters
+        class="w-auto grid grid-cols-2 gap-3 flex-1 min-h-0"
+      />
+
     </div>
-    <div class="segment"> 
-      <Recents />
+
+    <div class="segment h-full min-h-0 overflow-hidden">
+
+      <Recents
+        :recently-played="recentlyPlayed"
+        class="h-full"
+      />
+
     </div>
+
   </div>
+
 </template>
 
 <script lang="ts">
@@ -25,7 +45,7 @@ import { PlayingNow } from '~/types/playingNow';
 export default {
   name: 'Home',
   mounted() {
-    console.log(this.nowListening)
+    // console.log(this.recentlyPlayed.items)
   },
     computed: {
       nowListening() {
@@ -50,7 +70,26 @@ export default {
         return this.$page.props.topArtists
       },
       recentlyPlayed() {
-        return this.$page.props.recentlyPlayed
+    const spotify = this.$page.props.recentlyPlayed
+
+    if (!spotify) {
+      return []
+    }
+
+    const recents = spotify.items
+    const recentlyPlayed = []
+
+    for (let i = 0; i < recents.length; i++) {
+      recentlyPlayed.push({
+        songName: recents[i].track.name,
+        album: recents[i].track.album.name,
+        artist: recents[i].track.artists[0].name,
+        albumCover: recents[i].track.album.images[0].url,
+        playedAt: recents[i].played_at,
+      })
+    }
+    console.log(recentlyPlayed)
+    return recentlyPlayed
       }
     },
   components: {

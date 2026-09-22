@@ -137,7 +137,44 @@ export default class SpotifyService {
   }
 
   async getRecentlyPlayed(userId: number) {
-    // Spotify /me/player/recently-played
+  const account = await SpotifyAccount
+    .query()
+    .where('userId', userId)
+    .first()
+
+  if (!account) {
+    return null
+  }
+
+  let response = await fetch(
+    'https://api.spotify.com/v1/me/player/recently-played',
+    {
+      headers: {
+        Authorization: `Bearer ${account.accessToken}`,
+      },
+    }
+  )
+
+  if (response.status === 401) {
+    const accessToken = await this.refreshAccessToken(account)
+
+    response = await fetch(
+      'https://api.spotify.com/v1/me/player/recently-played',
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    )
+  }
+
+  if (!response.ok) {
+    throw new Error(
+      `Spotify API error: ${response.status} ${response.statusText}`
+    )
+  }
+
+  return await response.json()
   }
 
   async refreshAccessToken(account: SpotifyAccount) {
