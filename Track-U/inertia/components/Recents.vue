@@ -8,7 +8,6 @@
     </p>
     <hr class="shrink-0">
     <div class="flex-1 min-h-0 overflow-y-auto">
-
       <div
         v-for="(song, index) in recentlyPlayed"
         :key="`${song.playedAt}-${index}`"
@@ -40,11 +39,8 @@
         </p>
 
       </div>
-
     </div>
-
   </div>
-
 </div>
 </template>
 
