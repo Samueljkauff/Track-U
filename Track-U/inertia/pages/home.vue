@@ -14,6 +14,7 @@
       <EntertainmentZone />
 
       <Topsters
+      :categories="categories"
         class="w-auto grid grid-cols-2 gap-3 flex-1 min-h-0"
       />
 
@@ -64,32 +65,49 @@ export default {
         return null
       },
       topTracks() {
-        return this.$page.props.topTracks
+        return this.$page.props.topTracks;
       },
       topArtists() {
-        return this.$page.props.topArtists
+        return this.$page.props.topArtists;
+      },
+       categories() {
+        return [
+          {
+            name: 'Top Artists',
+            topThree: this.$page.props.topArtists.items.map((artist) => ({
+              name: artist.name,
+              image: artist.images[0]?.url ?? '',
+            })),
+          },
+          {
+            name: 'Top Tracks',
+            topThree: this.$page.props.topTracks.items.map((track) => ({
+              name: track.name,
+              image: track.album.images[0]?.url ?? '',
+            })),
+          },
+        ]
       },
       recentlyPlayed() {
-    const spotify = this.$page.props.recentlyPlayed
+        const spotify = this.$page.props.recentlyPlayed
 
-    if (!spotify) {
-      return []
-    }
+        if (!spotify) {
+          return []
+        }
 
-    const recents = spotify.items
-    const recentlyPlayed = []
+        const recents = spotify.items
+        const recentlyPlayed = []
 
-    for (let i = 0; i < recents.length; i++) {
-      recentlyPlayed.push({
-        songName: recents[i].track.name,
-        album: recents[i].track.album.name,
-        artist: recents[i].track.artists[0].name,
-        albumCover: recents[i].track.album.images[0].url,
-        playedAt: recents[i].played_at,
-      })
-    }
-    console.log(recentlyPlayed)
-    return recentlyPlayed
+        for (let i = 0; i < recents.length; i++) {
+          recentlyPlayed.push({
+            songName: recents[i].track.name,
+            album: recents[i].track.album.name,
+            artist: recents[i].track.artists[0].name,
+            albumCover: recents[i].track.album.images[0].url,
+            playedAt: recents[i].played_at,
+          })
+        }
+        return recentlyPlayed
       }
     },
   components: {

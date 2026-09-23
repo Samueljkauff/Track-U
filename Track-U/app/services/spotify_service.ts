@@ -21,6 +21,11 @@ type SpotifyUser = {
   }[]
 }
 
+type SpotifyTimeRange =
+  | 'short_term'
+  | 'medium_term'
+  | 'long_term'
+
 export default class SpotifyService {
   async connectAccount(code: string, userId: number) {
     const tokenResponse = await fetch(
@@ -128,54 +133,141 @@ export default class SpotifyService {
     return await response.json()
   }
 
-  async getTopTracks(userId: number) {
-    // Spotify /me/top/tracks
-  }
+    async getTopTracks(
+    userId: number,
+    timeRange: SpotifyTimeRange = 'long_term',
+    limit: number = 50
+    ) {
+    const account = await SpotifyAccount
+        .query()
+        .where('userId', userId)
+        .first()
 
-  async getTopArtists(userId: number) {
-    // Spotify /me/top/artists
-  }
-
-  async getRecentlyPlayed(userId: number) {
-  const account = await SpotifyAccount
-    .query()
-    .where('userId', userId)
-    .first()
-
-  if (!account) {
-    return null
-  }
-
-  let response = await fetch(
-    'https://api.spotify.com/v1/me/player/recently-played',
-    {
-      headers: {
-        Authorization: `Bearer ${account.accessToken}`,
-      },
+    if (!account) {
+        return null
     }
-  )
 
-  if (response.status === 401) {
-    const accessToken = await this.refreshAccessToken(account)
-
-    response = await fetch(
-      'https://api.spotify.com/v1/me/player/recently-played',
-      {
+    let response = await fetch(
+        `https://api.spotify.com/v1/me/top/tracks?time_range=${timeRange}&limit=${limit}`,
+        {
         headers: {
-          Authorization: `Bearer ${accessToken}`,
+            Authorization: `Bearer ${account.accessToken}`,
         },
-      }
+        }
     )
-  }
 
-  if (!response.ok) {
-    throw new Error(
-      `Spotify API error: ${response.status} ${response.statusText}`
+    if (response.status === 401) {
+        const accessToken = await this.refreshAccessToken(account)
+
+        response = await fetch(
+        `https://api.spotify.com/v1/me/top/tracks?time_range=${timeRange}&limit=${limit}`,
+        {
+            headers: {
+            Authorization: `Bearer ${accessToken}`,
+            },
+        }
+        )
+    }
+
+    if (!response.ok) {
+        throw new Error(
+        `Spotify API error: ${response.status} ${response.statusText}`
+        )
+    }
+
+    return await response.json()
+    }
+
+    async getTopArtists(
+    userId: number,
+    timeRange: SpotifyTimeRange = 'long_term',
+    limit: number = 50
+    ) {
+    const account = await SpotifyAccount
+        .query()
+        .where('userId', userId)
+        .first()
+
+    if (!account) {
+        return null
+    }
+
+    const params = new URLSearchParams({
+        limit: limit.toString(),
+        time_range: timeRange,
+    })
+
+    let response = await fetch(
+        `https://api.spotify.com/v1/me/top/artists?${params}`,
+        {
+        headers: {
+            Authorization: `Bearer ${account.accessToken}`,
+        },
+        }
     )
-  }
 
-  return await response.json()
-  }
+    if (response.status === 401) {
+        const accessToken = await this.refreshAccessToken(account)
+
+        response = await fetch(
+        `https://api.spotify.com/v1/me/top/artists?${params}`,
+        {
+            headers: {
+            Authorization: `Bearer ${accessToken}`,
+            },
+        }
+        )
+    }
+
+    if (!response.ok) {
+        throw new Error(
+        `Spotify API error: ${response.status} ${response.statusText}`
+        )
+    }
+
+    return await response.json()
+    }
+
+    async getRecentlyPlayed(userId: number) {
+    const account = await SpotifyAccount
+        .query()
+        .where('userId', userId)
+        .first()
+
+    if (!account) {
+        return null
+    }
+
+    let response = await fetch(
+        'https://api.spotify.com/v1/me/player/recently-played',
+        {
+        headers: {
+            Authorization: `Bearer ${account.accessToken}`,
+        },
+        }
+    )
+
+    if (response.status === 401) {
+        const accessToken = await this.refreshAccessToken(account)
+
+        response = await fetch(
+        'https://api.spotify.com/v1/me/player/recently-played',
+        {
+            headers: {
+            Authorization: `Bearer ${accessToken}`,
+            },
+        }
+        )
+    }
+
+    if (!response.ok) {
+        throw new Error(
+        `Spotify API error: ${response.status} ${response.statusText}`
+        )
+    }
+
+    return await response.json()
+    }
 
   async refreshAccessToken(account: SpotifyAccount) {
     const response = await fetch(
