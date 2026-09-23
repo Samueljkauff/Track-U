@@ -73,14 +73,14 @@ export default {
        categories() {
         return [
           {
-            name: 'Top Artists',
+            name: 'Top Artists of All Time',
             topThree: this.$page.props.topArtists.items.map((artist) => ({
               name: artist.name,
               image: artist.images[0]?.url ?? '',
             })),
           },
           {
-            name: 'Top Tracks',
+            name: 'Top Tracks of All Time',
             topThree: this.$page.props.topTracks.items.map((track) => ({
               name: track.name,
               image: track.album.images[0]?.url ?? '',
