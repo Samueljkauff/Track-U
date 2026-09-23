@@ -10,25 +10,21 @@
       <p>
         {{ topster.name }}
       </p>
-
       <div
         v-for="(item, index) in topster.topThree"
         :key="item.name"
         class="w-[75%] flex-1 grid grid-cols-[auto_1fr] items-center gap-3 min-h-0"
       >
         <hr class="col-span-2 w-full my-2">
-
         <p class="text-lg">
           {{ index + 1 }}
         </p>
-
         <div class="flex items-center gap-3 min-w-0">
           <img
             :src="item.image"
             :alt="`${item.name} image`"
             class="w-12 h-12 object-cover rounded-xs shrink-0"
           >
-
           <p class="text-lg font-light truncate">
             {{ item.name }}
           </p>
