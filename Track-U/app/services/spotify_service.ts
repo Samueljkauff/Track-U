@@ -27,53 +27,75 @@ type SpotifyTimeRange =
   | 'long_term'
 
 export default class SpotifyService {
-  async connectAccount(code: string, userId: number) {
-    const tokenResponse = await fetch(
-      'https://accounts.spotify.com/api/token',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          Authorization:
-            'Basic ' +
-            Buffer.from(
-              `${env.get('SPOTIFY_CLIENT_ID')}:${env.get('SPOTIFY_CLIENT_SECRET')}`
-            ).toString('base64'),
-        },
-        body: new URLSearchParams({
-          grant_type: 'authorization_code',
-          code,
-          redirect_uri: env.get('SPOTIFY_REDIRECT_URI')!,
-        }),
-      }
-    )
-
-    const tokens = await tokenResponse.json() as Token
-
-    const userResponse = await fetch(
-      'https://api.spotify.com/v1/me',
-      {
-        headers: {
-          Authorization: `Bearer ${tokens.access_token}`,
-        },
-      }
-    )
-
-    const spotifyUser = await userResponse.json() as SpotifyUser
-
-    await SpotifyAccount.create({
-      userId,
-      spotifyId: spotifyUser.id,
-      userName: spotifyUser.display_name ?? 'Spotify User',
-      userLink: spotifyUser.external_urls.spotify,
-      userPfp: spotifyUser.images[0]?.url ?? null,
-      accessToken: tokens.access_token,
-      refreshToken: tokens.refresh_token!,
-      expiresAt: DateTime.now().plus({
-        seconds: tokens.expires_in,
+async connectAccount(code: string, userId: number) {
+  const tokenResponse = await fetch(
+    'https://accounts.spotify.com/api/token',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization:
+          'Basic ' +
+          Buffer.from(
+            `${env.get('SPOTIFY_CLIENT_ID')}:${env.get('SPOTIFY_CLIENT_SECRET')}`
+          ).toString('base64'),
+      },
+      body: new URLSearchParams({
+        grant_type: 'authorization_code',
+        code,
+        redirect_uri: env.get('SPOTIFY_REDIRECT_URI')!,
       }),
-    })
+    }
+  )
+
+  const tokenText = await tokenResponse.text()
+
+  console.log('TOKEN STATUS:', tokenResponse.status)
+  console.log('TOKEN RESPONSE:', tokenText)
+
+  if (!tokenResponse.ok) {
+    throw new Error(
+      `Spotify token request failed: ${tokenResponse.status} ${tokenText}`
+    )
   }
+
+  const tokens = JSON.parse(tokenText) as Token
+
+  const userResponse = await fetch(
+    'https://api.spotify.com/v1/me',
+    {
+      headers: {
+        Authorization: `Bearer ${tokens.access_token}`,
+      },
+    }
+  )
+
+  const userText = await userResponse.text()
+
+  console.log('USER STATUS:', userResponse.status)
+  console.log('USER RESPONSE:', userText)
+
+  if (!userResponse.ok) {
+    throw new Error(
+      `Spotify user request failed: ${userResponse.status} ${userText}`
+    )
+  }
+
+  const spotifyUser = JSON.parse(userText) as SpotifyUser
+
+  await SpotifyAccount.create({
+    userId,
+    spotifyId: spotifyUser.id,
+    userName: spotifyUser.display_name ?? 'Spotify User',
+    userLink: spotifyUser.external_urls.spotify,
+    userPfp: spotifyUser.images[0]?.url ?? null,
+    accessToken: tokens.access_token,
+    refreshToken: tokens.refresh_token!,
+    expiresAt: DateTime.now().plus({
+      seconds: tokens.expires_in,
+    }),
+  })
+}
 
   async disconnectAccount(userId: number) {
     const spotifyAccount = await SpotifyAccount
