@@ -64,23 +64,17 @@ export default {
         }
         return null
       },
-      topTracks() {
-        return this.$page.props.topTracks;
-      },
-      topArtists() {
-        return this.$page.props.topArtists;
-      },
        categories() {
         return [
           {
-            name: 'Top Artists of All Time',
+            name: 'Top Artists of the Past Year',
             topThree: this.$page.props.topArtists.items.map((artist) => ({
               name: artist.name,
               image: artist.images[0]?.url ?? '',
             })),
           },
           {
-            name: 'Top Tracks of All Time',
+            name: 'Top Tracks of the Past Year',
             topThree: this.$page.props.topTracks.items.map((track) => ({
               name: track.name,
               image: track.album.images[0]?.url ?? '',

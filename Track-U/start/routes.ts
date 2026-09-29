@@ -24,8 +24,8 @@ router
   .group(() => {
     router.post('logout', [controllers.Session, 'destroy'])
     router.get('/', [controllers.Home, 'show']).as('home')
-    router.on('/top-songs').renderInertia('TopSongs', {}).as('TopSongs')
-    router.on('/top-artists').renderInertia('TopArtists', {}).as('TopArtists')
+    router.get('/top-songs', [controllers.TopSongs, 'show']).as('TopSongs')
+    router.get('/top-artists', [controllers.TopArtists, 'show']).as('TopArtists')
     router.on('/shop').renderInertia('Shop', {}).as('Shop')
     router.get('/profile', [controllers.Profile, 'show']).as('Profile')
   })

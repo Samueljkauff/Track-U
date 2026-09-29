@@ -10,4 +10,6 @@ export const controllers = {
   QuickView: () => import('#controllers/quick_view_controller'),
   Session: () => import('#controllers/session_controller'),
   Spotify: () => import('#controllers/spotify_controller'),
+  TopArtists: () => import('#controllers/top_artists_controller'),
+  TopSongs: () => import('#controllers/top_songs_controller'),
 }
