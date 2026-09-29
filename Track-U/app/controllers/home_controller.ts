@@ -15,7 +15,6 @@ export default class HomeController {
 
     const topArtists =
     await spotifyService.getTopArtists(auth.user!.id, 'long_term', 3);
-    console.log(topArtists)
 
     const recentlyPlayed =
       await spotifyService.getRecentlyPlayed(auth.user!.id);

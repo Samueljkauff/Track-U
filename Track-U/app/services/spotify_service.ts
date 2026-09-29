@@ -50,9 +50,6 @@ async connectAccount(code: string, userId: number) {
 
   const tokenText = await tokenResponse.text()
 
-  console.log('TOKEN STATUS:', tokenResponse.status)
-  console.log('TOKEN RESPONSE:', tokenText)
-
   if (!tokenResponse.ok) {
     throw new Error(
       `Spotify token request failed: ${tokenResponse.status} ${tokenText}`
@@ -71,9 +68,6 @@ async connectAccount(code: string, userId: number) {
   )
 
   const userText = await userResponse.text()
-
-  console.log('USER STATUS:', userResponse.status)
-  console.log('USER RESPONSE:', userText)
 
   if (!userResponse.ok) {
     throw new Error(
